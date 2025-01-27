@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Utilisateur;
 import repository.UtilisateurRepository;
@@ -21,10 +22,10 @@ public class ConnexionController {
     private Button btnValider;
 
     @FXML
-    private TextArea utilisateurId;
+    private TextField utilisateurId;
 
     @FXML
-    private TextArea utilisateurMdp;
+    private TextField utilisateurMdp;
 
     @FXML
     private Label mauvaisMdp;
@@ -59,4 +60,5 @@ public class ConnexionController {
             mauvaisMdp.setText("Identifiants incorrects.");
         }
     }
+
 }
