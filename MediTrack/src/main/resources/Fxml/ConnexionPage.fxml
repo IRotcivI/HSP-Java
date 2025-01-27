@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="505.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ConnexionController">
    <children>
       <VBox layoutX="263.0" layoutY="159.0" prefHeight="186.0" prefWidth="300.0" spacing="10.0">
@@ -24,7 +23,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btnValider" layoutX="386.0" layoutY="387.0" mnemonicParsing="false" onAction="#connexionApp" text="Valider" />
-      <Label fx:id="mauvaisMdp" layoutX="361.0" layoutY="345.0" prefHeight="18.0" prefWidth="0.0" textFill="RED" />
+      <Button fx:id="btnValider" layoutX="386.0" layoutY="372.0" mnemonicParsing="false" onAction="#connexionApp" text="Valider" />
+      <Label fx:id="mauvaisMdp" alignment="CENTER" layoutX="263.0" layoutY="336.0" prefHeight="18.0" prefWidth="300.0" textFill="RED" wrapText="true" />
    </children>
 </AnchorPane>
