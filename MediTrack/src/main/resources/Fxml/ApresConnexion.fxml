@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ApresConnexionController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="Fichier">
+                    <MenuItem onAction="#deconnexion" text="Déconnexion" />
+                    <MenuItem onAction="#quitter" text="Quitter" />
+                </Menu>
+                <Menu text="Gestion des patients">
+                    <MenuItem onAction="#ouvrirCreationPatient" text="Créer une fiche patient" />
+                    <MenuItem onAction="#ouvrirRecherchePatient" text="Rechercher un patient" />
+                    <MenuItem onAction="#ouvrirGestionDossiers" text="Gérer les dossiers" />
+                </Menu>
+                <Menu text="Hospitalisations">
+                    <MenuItem onAction="#ouvrirListeHospitalisations" text="Liste des hospitalisations" />
+                    <MenuItem onAction="#ouvrirLiberationChambre" text="Libérer une chambre" />
+                </Menu>
+                <Menu text="Gestion des stocks">
+                    <MenuItem onAction="#ouvrirListeProduits" text="Liste des produits" />
+                    <MenuItem onAction="#ouvrirGestionProduits" text="Ajouter/Modifier un produit" />
+                    <MenuItem onAction="#ouvrirDemandes" text="Gérer les demandes" />
+                    <MenuItem onAction="#ouvrirReapprovisionnement" text="Réapprovisionnement" />
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <StackPane fx:id="contenuDynamique">
+            <children>
+                <Label style="-fx-font-size: 16px;" text="Bienvenue dans l'application MediTrack !" />
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>
