@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Fxml.Hospitalisation.TableauChambresController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox>
+        <TableView fx:id="chambreTable">
+            <columns>
+                <TableColumn text="Numéro" fx:id="numeroCol" />
+                <TableColumn text="Type" fx:id="typeCol" />
+                <TableColumn text="Disponible" fx:id="disponibleCol" />
+            </columns>
+        </TableView>
+    </VBox>
+
+</AnchorPane>
