@@ -1,12 +1,12 @@
 package model;
 
-public class Ordonance {
+public class Ordonnance {
     private int id;
     private String dateCreation;
     private String dateSortie;
     private int ref_utilisateur;
 
-    public Ordonance(String dateSortie, int ref_utilisateur, String dateCreation) {
+    public Ordonnance(String dateSortie, int ref_utilisateur, String dateCreation) {
         this.dateSortie = dateSortie;
         this.ref_utilisateur = ref_utilisateur;
         this.dateCreation = dateCreation;

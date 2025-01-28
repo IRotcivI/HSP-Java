@@ -2,7 +2,13 @@ package appli.meditrack;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ApresConnexionController {
 
@@ -20,8 +26,13 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirCreationPatient(ActionEvent event) {
-
+    void ouvrirCreationPatient(ActionEvent event) throws IOException {
+        Parent fiche_patient = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesPatients/FichePatient.fxml"));
+        Scene scene = new Scene(fiche_patient);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
