@@ -51,7 +51,11 @@ public class ConnexionController {
         boolean connexionReussie = utilisateurRepository.connexionUtilisateur(utilisateur);
 
         if (connexionReussie) {
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ApresConnexion.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } else {
             mauvaisMdp.setText("Identifiants incorrects.");
         }
