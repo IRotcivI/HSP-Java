@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="552.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.FichePatientController">
+    <children>
+        <Label layoutX="281.0" layoutY="30.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Fiche Patient" />
+
+        <GridPane hgap="10" layoutX="50.0" layoutY="80.0" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="120.0" />
+                <ColumnConstraints minWidth="300.0" />
+            </columnConstraints>
+            <children>
+                <Label text="Nom:" />
+                <TextField fx:id="nomField" GridPane.columnIndex="1" />
+
+                <Label text="Prénom:" GridPane.rowIndex="1" />
+                <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="N° Sécurité Sociale:" GridPane.rowIndex="2" />
+                <TextField fx:id="securiteSocialeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Email:" GridPane.rowIndex="3" />
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Téléphone:" GridPane.rowIndex="4" />
+                <TextField fx:id="telephoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label text="Adresse (Voie):" GridPane.rowIndex="5" />
+                <TextField fx:id="voieField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                <Label text="Rue:" GridPane.rowIndex="6" />
+                <TextField fx:id="rueField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                <Label text="Ville:" GridPane.rowIndex="7" />
+                <TextField fx:id="villeField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+                <Label text="Pays:" GridPane.rowIndex="8" />
+                <TextField fx:id="paysField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+
+                <Label text="Gravité (1-5):" GridPane.rowIndex="9" />
+                <ChoiceBox fx:id="graviteChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="1" />
+                            <String fx:value="2" />
+                            <String fx:value="3" />
+                            <String fx:value="4" />
+                            <String fx:value="5" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="btnValider" layoutX="323.0" layoutY="481.0" onAction="#enregistrerFichePatient" text="Valider" />
+      <Label fx:id="labelErreur" alignment="CENTER" layoutX="146.0" layoutY="519.0" prefHeight="18.0" prefWidth="408.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="labelReussi" alignment="CENTER" layoutX="264.0" layoutY="519.0" prefHeight="18.0" prefWidth="180.0" textFill="#00f725" />
+    </children>
+</AnchorPane>
