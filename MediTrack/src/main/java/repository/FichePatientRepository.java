@@ -3,6 +3,7 @@ package repository;
 import model.FichePatient;
 
 import java.sql.*;
+import session.SessionManager;
 
 public class FichePatientRepository {
 
@@ -20,24 +21,23 @@ public class FichePatientRepository {
         String rue = fichePatient.getRue();
         String ville = fichePatient.getVille();
         String pays = fichePatient.getPays();
-        int utilisateur = fichePatient.getUtilisateur();
 
-        PreparedStatement requetePrepareInsert = maConnexion.prepareStatement("" +
-                "INSERT INTO `fiche_patient`(`nom`, `prenom`, `numeroSecu`, `email`, `telephone`, `numeroRue`, `rue`, `ville`, `pays`, `ref_utilisateur`) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" +
-                "");
+        String sql = "INSERT INTO fiche_patient (nom, prenom, numeroSecu, email, telephone, voie, rue, ville, pays, ref_utilisateur) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement requetePrepareInsert = maConnexion.prepareStatement(sql);
+
         requetePrepareInsert.setString(1, nom);
         requetePrepareInsert.setString(2, prenom);
-        requetePrepareInsert.setString(3, email);
-        requetePrepareInsert.setString(4, telephone);
-        requetePrepareInsert.setString(5, rue);
-        requetePrepareInsert.setString(6, ville);
-        requetePrepareInsert.setString(7, pays);
-        requetePrepareInsert.setInt(8, utilisateur);
-        ResultSet resultat = requetePrepareInsert.executeQuery();
-        if (resultat.next()) {
-            return true;
-        }
-        return false;
+        requetePrepareInsert.setString(3, secu);
+        requetePrepareInsert.setString(4, email);
+        requetePrepareInsert.setString(5, telephone);
+        requetePrepareInsert.setString(6, voie);
+        requetePrepareInsert.setString(7, rue);
+        requetePrepareInsert.setString(8, ville);
+        requetePrepareInsert.setString(9, pays);
+        requetePrepareInsert.setInt(10, SessionManager.getId());
+
+        int resultat = requetePrepareInsert.executeUpdate();
+        return resultat > 0;
     }
 }
