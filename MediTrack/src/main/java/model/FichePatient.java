@@ -4,7 +4,7 @@ public class FichePatient {
     private int id;
     private String nom;
     private String prenom;
-    private String secu;
+    private long secu;
     private String email;
     private String telephone;
     private String voie;
@@ -13,7 +13,7 @@ public class FichePatient {
     private String pays;
     private int utilisateur;
 
-    public FichePatient(String nom, String secu, String prenom, String email, String voie, String telephone, String rue, String ville, String pays, int utilisateur) {
+    public FichePatient(String nom, long secu, String prenom, String email, String voie, String telephone, String rue, String ville, String pays, int utilisateur) {
         this.nom = nom;
         this.secu = secu;
         this.prenom = prenom;
@@ -42,11 +42,11 @@ public class FichePatient {
         this.prenom = prenom;
     }
 
-    public String getSecu() {
+    public long getSecu() {
         return secu;
     }
 
-    public void setSecu(String secu) {
+    public void setSecu(long secu) {
         this.secu = secu;
     }
 

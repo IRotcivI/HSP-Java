@@ -76,8 +76,13 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirRecherchePatient(ActionEvent event) {
-
+    void ouvrirRecherchePatient(ActionEvent event) throws IOException {
+        Parent recherche_patient = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesPatients/RecherchePatients.fxml"));
+        Scene scene = new Scene(recherche_patient);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

@@ -62,7 +62,7 @@ public class FichePatientController {
         String pays = paysField.getText();
         String prenom = prenomField.getText();
         String rue = rueField.getText();
-        String securiteSociale = securiteSocialeField.getText();
+        int securiteSociale = Integer.parseInt(securiteSocialeField.getText());
         String telephone = telephoneField.getText();
         String ville = villeField.getText();
         String voie = voieField.getText();
@@ -75,11 +75,6 @@ public class FichePatientController {
 
         if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")) {
             labelErreur.setText("Veuillez entrer une adresse email valide.");
-            return;
-        }
-
-        if (!securiteSociale.matches("^\\d{15}$")) {
-            labelErreur.setText("Le numéro de sécurité sociale doit contenir 15 chiffres.");
             return;
         }
 

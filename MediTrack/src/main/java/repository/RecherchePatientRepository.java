@@ -20,13 +20,29 @@ public class RecherchePatientRepository {
         ResultSet resultSet = requetePrepareSelect.executeQuery();
 
         while (resultSet.next()) {
-            FichePatient patient = new FichePatient();
-            patient.setNom(resultSet.getString("nom"));
-            patient.setPrenom(resultSet.getString("prenom"));
-            patient.setSecu(resultSet.getString("numeroSecu"));
-            patient.setEmail(resultSet.getString("email"));
+            // Extraction des champs depuis le ResultSet
+            String nom = resultSet.getString("nom");
+            String prenom = resultSet.getString("prenom");
+            Long secu = resultSet.getLong("numeroSecu");
+            String email = resultSet.getString("email");
+            String telephone = resultSet.getString("telephone");
+            String voie = resultSet.getString("voie");
+            String rue = resultSet.getString("rue");
+            String ville = resultSet.getString("ville");
+            String pays = resultSet.getString("pays");
+            int utilisateur = resultSet.getInt("ref_utilisateur");
+
+            FichePatient patient = new FichePatient(
+                    nom, secu, prenom, email, voie, telephone, rue, ville, pays, utilisateur
+            );
+
             patients.add(patient);
         }
+
+        resultSet.close();
+        requetePrepareSelect.close();
+        connection.close();
+
         return patients;
     }
 }
