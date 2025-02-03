@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="appli.meditrack.RecherchePatientController"
+            prefHeight="500.0" prefWidth="800.0">
+    <children>
+        <Label text="Rechercher un Patient" layoutX="300.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <HBox layoutX="50.0" layoutY="70.0" spacing="10.0">
+            <children>
+                <Label text="Nom / Numéro Sécurité Sociale:" />
+                <TextField fx:id="searchField" prefWidth="300.0" />
+                <Button text="Rechercher" onAction="#rechercherPatient" />
+            </children>
+        </HBox>
+
+        <TableView fx:id="tableViewPatients" layoutX="50.0" layoutY="120.0" prefHeight="300.0" prefWidth="700.0">
+            <columns>
+                <TableColumn text="Nom" fx:id="columnNom" prefWidth="150.0" />
+                <TableColumn text="Prénom" fx:id="columnPrenom" prefWidth="150.0" />
+                <TableColumn text="Sécurité Sociale" fx:id="columnSecu" prefWidth="200.0" />
+                <TableColumn text="Email" fx:id="columnEmail" prefWidth="200.0" />
+            </columns>
+        </TableView>
+
+        <Label fx:id="labelStatus" layoutX="50.0" layoutY="430.0" textFill="RED" />
+    </children>
+</AnchorPane>
