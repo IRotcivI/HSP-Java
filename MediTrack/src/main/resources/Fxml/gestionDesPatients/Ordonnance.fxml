@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="appli.meditrack.OrdonnanceController" spacing="10">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Fxml.gestionDesPatients.Ordonnance"
-            prefHeight="400.0" prefWidth="600.0">
+    <!-- Titre de la page -->
+    <Label text="Ordonnance" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-</AnchorPane>
+    <!-- Date de création -->
+    <Label text="Date de création:"/>
+    <DatePicker fx:id="dateCreation" />
+
+    <!-- Date de sortie -->
+    <Label text="Date de sortie:"/>
+    <DatePicker fx:id="dateSortie" />
+
+    <!-- Nom du patient -->
+    <Label text="Nom du patient:"/>
+    <TextField fx:id="nomPatient" promptText="Entrez le nom du patient" />
+
+    <!-- Commentaire -->
+    <Label text="Commentaire:"/>
+    <TextArea fx:id="commentaire" promptText="Entrez un commentaire" wrapText="true" prefHeight="100" />
+
+    <!-- Bouton pour enregistrer l'ordonnance -->
+    <Button text="Enregistrer" onAction="#enregistrerOrdonnance" />
+</VBox>
