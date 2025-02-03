@@ -1,30 +1,54 @@
 package model;
 
+
 import javafx.beans.binding.BooleanExpression;
+import javafx.beans.value.ObservableValue;
 
 public class Chambre {
-    private String type;
-    private int numero;
-    private boolean disponibilite;
 
-    public Chambre(int numero, String type, boolean disponibilite) {
+    public int numero;
+    private String type;
+    private boolean disponible;
+
+    public Chambre(int numero , String type , boolean disponible ) {
         this.numero = numero;
         this.type = type;
-        this.disponibilite = disponibilite;
+        this.disponible = disponible;
     }
 
     public int getNumero() {
         return numero;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     public String getType() {
         return type;
     }
 
-    public boolean isDisponibilite() {
-        return disponibilite;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public BooleanExpression numeroProperty() {
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public BooleanExpression numero() {
+        return null;
+    }
+
+    public BooleanExpression disponible() {
+        return null;
+    }
+
+    public ObservableValue<String> type() {
+        return null;
     }
 }
