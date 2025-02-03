@@ -15,7 +15,7 @@ public class FichePatientRepository {
         String nom = fichePatient.getNom();
         String prenom = fichePatient.getPrenom();
         String email = fichePatient.getEmail();
-        String secu = fichePatient.getSecu();
+        long secu = fichePatient.getSecu();
         String telephone = fichePatient.getTelephone();
         String voie = fichePatient.getVoie();
         String rue = fichePatient.getRue();
@@ -28,7 +28,7 @@ public class FichePatientRepository {
 
         requetePrepareInsert.setString(1, nom);
         requetePrepareInsert.setString(2, prenom);
-        requetePrepareInsert.setString(3, secu);
+        requetePrepareInsert.setLong(3, secu);
         requetePrepareInsert.setString(4, email);
         requetePrepareInsert.setString(5, telephone);
         requetePrepareInsert.setString(6, voie);
