@@ -10,45 +10,29 @@ public class Fournisseur {
     private String email;
 
 
-    public Fournisseur(String email, String telephone, String ville, String rue, String voie, String nom) {
-        this.email = email;
-        this.telephone = telephone;
-        this.ville = ville;
-        this.rue = rue;
-        this.voie = voie;
+    public Fournisseur(String nom, String voie, String rue, String ville, String telephone, String email) {
         this.nom = nom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+        this.voie = voie;
+        this.rue = rue;
+        this.ville = ville;
+        this.telephone = telephone;
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public int getId() {
+        return id;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getVille() {
-        return ville;
+    public String getNom() {
+        return nom;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getRue() {
-        return rue;
-    }
-
-    public void setRue(String rue) {
-        this.rue = rue;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getVoie() {
@@ -59,11 +43,35 @@ public class Fournisseur {
         this.voie = voie;
     }
 
-    public String getNom() {
-        return nom;
+    public String getRue() {
+        return rue;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
