@@ -13,6 +13,6 @@ module appli.meditrack {
 
     opens appli.meditrack to javafx.fxml;
     exports appli.meditrack;
-
     opens model to javafx.base;
+    opens Fxml.gestionDesStocks to javafx.fxml;
 }
