@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<GridPane fx:controller="appli.meditrack.InscriptionController"
+          xmlns="http://javafx.com/javafx/8"
+          xmlns:fx="http://javafx.com/fxml/1"
+          alignment="center" hgap="10" vgap="10" style="-fx-padding: 20;">
+
+    <Label text="Nom:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Prénom:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="prenomField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Mot de passe:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <PasswordField fx:id="passwordField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Confirmer le mot de passe:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <PasswordField fx:id="confirmPasswordField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Rôle:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="roleComboBox" GridPane.rowIndex="5" GridPane.columnIndex="1">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Admin"/>
+                <String fx:value="Médecin"/>
+                <String fx:value="Patient"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Label fx:id="messageLabel" GridPane.rowIndex="6" GridPane.columnIndex="1" style="-fx-text-fill: red;"/>
+
+    <Button text="S'inscrire" onAction="#inscrireUtilisateur" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+</GridPane>

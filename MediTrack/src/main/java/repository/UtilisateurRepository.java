@@ -1,6 +1,7 @@
 package repository;
 
 import model.Utilisateur;
+import database.Database;
 import session.SessionManager;
 import java.sql.*;
 
@@ -30,4 +31,32 @@ public class UtilisateurRepository {
         }
         return false;
     }
+
+    public boolean inscrireUtilisateur(Utilisateur utilisateur) throws SQLException {
+        Connection maConnexion = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/hsp_java", "root", ""
+        );
+        String nom = utilisateur.getNom();
+        String prenom = utilisateur.getPrenom();
+        String email = utilisateur.getEmail();
+        String mdp = utilisateur.getMdp();
+        String role = utilisateur.getRole();
+
+        PreparedStatement requetePrepareInsert = maConnexion.prepareStatement("INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role) VALUES (?, ?, ?, ?, ?)");
+
+            requetePrepareInsert.setString(1, utilisateur.getNom());
+            requetePrepareInsert.setString(2, utilisateur.getPrenom());
+            requetePrepareInsert.setString(3, utilisateur.getEmail());
+            requetePrepareInsert.setString(4, utilisateur.getmotDePasse());
+            requetePrepareInsert.setString(5, utilisateur.getRole());
+
+            int rowsInserted = requetePrepareInsert.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+
 }
