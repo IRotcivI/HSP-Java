@@ -18,6 +18,7 @@
                 <Menu text="Gestion des patients">
                     <MenuItem onAction="#ouvrirCreationPatient" text="Créer une fiche patient" />
                     <MenuItem onAction="#ouvrirRecherchePatient" text="Rechercher un patient" />
+                    <MenuItem onAction="#ouvrirCreationDossier" text="Créer un dossier" />
                     <MenuItem onAction="#ouvrirGestionDossiers" text="Gérer les dossiers" />
                 </Menu>
                 <Menu text="Hospitalisations">

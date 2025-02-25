@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="500.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.CreationDossierController">
+    <children>
+        <Label layoutX="289.0" layoutY="25.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Création d'un Dossier" />
+
+        <GridPane hgap="10" layoutX="50.0" layoutY="80.0" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="150.0" />
+                <ColumnConstraints minWidth="400.0" />
+            </columnConstraints>
+            <children>
+                <Label text="N° Sécurité Sociale :" />
+                <TextField fx:id="numSecuField" promptText="Entrez le numéro de sécurité sociale" GridPane.columnIndex="1" />
+
+                <Label text="Date d'arrivée :" GridPane.rowIndex="1" />
+                <DatePicker fx:id="dateArriveePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Heure d'arrivée :" GridPane.rowIndex="2" />
+                <TextField fx:id="heureArriveeField" promptText="hh:mm:ss" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Description des symptômes :" GridPane.rowIndex="3" />
+                <TextArea fx:id="descriptionField" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Décision :" GridPane.rowIndex="4" />
+                <TextArea fx:id="decisionField" prefRowCount="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            </children>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+
+        <Button fx:id="btnValider" layoutX="367.0" layoutY="358.0" onAction="#creerDossier" text="Créer Dossier" />
+
+        <Label fx:id="labelStatus" layoutX="371.0" layoutY="396.0" textFill="RED" />
+      <Label fx:id="labelReussi" layoutX="371.0" layoutY="425.0" textFill="#00ff11" />
+    </children>
+</AnchorPane>

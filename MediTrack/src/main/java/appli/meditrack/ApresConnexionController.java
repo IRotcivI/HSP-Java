@@ -86,6 +86,16 @@ public class ApresConnexionController {
     }
 
     @FXML
+    public void ouvrirCreationDossier() throws IOException {
+        Parent creer_dossier = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesPatients/creerUnDossier.fxml"));
+        Scene scene = new Scene(creer_dossier);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void quitter(ActionEvent event) {
 
     }

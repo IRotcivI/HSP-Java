@@ -6,14 +6,16 @@ public class Dossier {
     private int heureArrive;
     private String description;
     private String decision;
-    private int  ref_utilisateur;
+    private int ref_utilisateur;
+    private int ref_patient;
 
-    public Dossier(int ref_utilisateur, String decision, String description, int heureArrive, String date) {
+    public Dossier(int ref_utilisateur, String decision, String description, int heureArrive, String date, int ref_patient) {
         this.ref_utilisateur = ref_utilisateur;
         this.decision = decision;
         this.description = description;
         this.heureArrive = heureArrive;
         this.date = date;
+        this.ref_patient = ref_patient;
     }
 
 
@@ -55,5 +57,13 @@ public class Dossier {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getRef_patient() {
+        return ref_patient;
+    }
+
+    public void setRef_patient(int ref_patient) {
+        this.ref_patient = ref_patient;
     }
 }
