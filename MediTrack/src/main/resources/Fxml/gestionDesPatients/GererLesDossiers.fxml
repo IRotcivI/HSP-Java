@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="appli.meditrack.GestionDossiersController"
+            prefHeight="500.0" prefWidth="800.0">
+    <children>
+        <!-- Titre de la page -->
+        <Label text="Gérer les Dossiers" layoutX="300.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <!-- TableView pour les dossiers -->
+        <TableView fx:id="tableViewDossiers" layoutX="50.0" layoutY="70.0" prefHeight="300.0" prefWidth="700.0">
+            <columns>
+                <TableColumn fx:id="columnNomPatient" text="Nom Patient" prefWidth="150.0" />
+                <TableColumn fx:id="columnPrenomPatient" text="Prénom Patient" prefWidth="150.0" />
+                <TableColumn fx:id="columnDateArrivee" text="Date d'Arrivée" prefWidth="150.0" />
+                <TableColumn fx:id="columnGravite" text="Gravité" prefWidth="100.0" />
+                <TableColumn fx:id="columnStatut" text="Statut" prefWidth="150.0" />
+            </columns>
+        </TableView>
+
+        <!-- Boutons d'action -->
+        <HBox spacing="10.0" layoutX="50.0" layoutY="400.0">
+            <children>
+                <Button text="Consulter" onAction="#consulterDossier" />
+                <Button text="Supprimer" onAction="#supprimerDossier" />
+                <Button text="Marquer comme Traité" onAction="#marquerTraite" />
+            </children>
+        </HBox>
+
+        <!-- Label pour les messages d'erreur ou de succès -->
+        <Label fx:id="labelStatus" layoutX="50.0" layoutY="450.0" textFill="RED" />
+    </children>
+</AnchorPane>
