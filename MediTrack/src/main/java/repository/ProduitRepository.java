@@ -11,15 +11,15 @@ public class ProduitRepository {
     public static void ajouterProduit(Produit produit) {
         String sql = "INSERT INTO produit (libelle, description, niveauDangerosité) VALUES (?, ?, ?)";
 
-        Database database = new Database(); // Création de l'objet Database
-        Connection connection = database.getConnection(); // Récupération de la connexion
+        Database database = new Database();
+        Connection connection = database.getConnection();
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) { // Préparation de la requête
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produit.getLibelle());
             stmt.setString(2, produit.getDescription());
             stmt.setString(3, produit.getNiveauDangerosite());
 
-            stmt.executeUpdate(); // Exécution de la requête
+            stmt.executeUpdate();
             System.out.println("Produit ajouté !");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -34,9 +34,9 @@ public class ProduitRepository {
         Connection connection = database.getConnection();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) { // Exécute la requête
+             ResultSet rs = stmt.executeQuery()) {
 
-            while (rs.next()) { // Parcours des résultats
+            while (rs.next()) {
                 Produit produit = new Produit(
                         rs.getString("libelle"),
                         rs.getString("description"),
