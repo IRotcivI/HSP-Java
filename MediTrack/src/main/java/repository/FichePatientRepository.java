@@ -22,7 +22,7 @@ public class FichePatientRepository {
         String ville = fichePatient.getVille();
         String pays = fichePatient.getPays();
 
-        String sql = "INSERT INTO fiche_patient (nom, prenom, numeroSecu, email, telephone, voie, rue, ville, pays, ref_utilisateur) " +
+        String sql = "INSERT INTO fiche_patient (nom, prenom, numeroSecu, email, telephone, numeroRue, rue, ville, pays, ref_utilisateur) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement requetePrepareInsert = maConnexion.prepareStatement(sql);
 

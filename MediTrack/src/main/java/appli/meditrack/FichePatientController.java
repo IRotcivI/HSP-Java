@@ -3,7 +3,6 @@ package appli.meditrack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.FichePatient;
@@ -50,7 +49,7 @@ public class FichePatientController {
     @FXML
     private Label labelReussi;
 
-    private final FichePatientRepository fichePatientRepository = new FichePatientRepository() ;
+    private final FichePatientRepository fichePatientRepository = new FichePatientRepository();
 
     @FXML
     void enregistrerFichePatient(ActionEvent event) throws SQLException {
@@ -90,7 +89,7 @@ public class FichePatientController {
             return;
         }
 
-        int securiteSociale = Integer.parseInt(securiteSocialeText);
+        long securiteSociale = Long.parseLong(securiteSocialeText);
 
         FichePatient fiche = new FichePatient(nom, securiteSociale, prenom, email, voie, telephone, rue, ville, pays, SessionManager.getId());
         boolean status = fichePatientRepository.creerUneFiche(fiche);
