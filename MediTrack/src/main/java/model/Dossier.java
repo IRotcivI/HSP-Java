@@ -1,69 +1,80 @@
 package model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Dossier {
-    private int id;
-    private String date;
-    private int heureArrive;
-    private String description;
-    private String decision;
-    private int ref_utilisateur;
-    private int ref_patient;
+    private final StringProperty dateArrivee = new SimpleStringProperty();
+    private final StringProperty heureArrivee = new SimpleStringProperty();
+    private final StringProperty description = new SimpleStringProperty();
+    private final StringProperty decision = new SimpleStringProperty();
+    private final StringProperty nomPatient = new SimpleStringProperty();
 
-    public Dossier(int ref_utilisateur, String decision, String description, int heureArrive, String date, int ref_patient) {
-        this.ref_utilisateur = ref_utilisateur;
-        this.decision = decision;
-        this.description = description;
-        this.heureArrive = heureArrive;
-        this.date = date;
-        this.ref_patient = ref_patient;
+    public Dossier(String dateArrivee, String heureArrivee, String description, String decision, String nomPatient) {
+        setDateArrivee(dateArrivee);
+        setHeureArrivee(heureArrivee);
+        setDescription(description);
+        setDecision(decision);
+        setNomPatient(nomPatient);
     }
 
-
-    public int getRef_utilisateur() {
-        return ref_utilisateur;
+    public String getDateArrivee() {
+        return dateArrivee.get();
     }
 
-    public void setRef_utilisateur(int ref_utilisateur) {
-        this.ref_utilisateur = ref_utilisateur;
+    public void setDateArrivee(String dateArrivee) {
+        this.dateArrivee.set(dateArrivee);
     }
 
-    public String getDecision() {
-        return decision;
+    public StringProperty dateArriveeProperty() {
+        return dateArrivee;
     }
 
-    public void setDecision(String decision) {
-        this.decision = decision;
+    public String getHeureArrivee() {
+        return heureArrivee.get();
+    }
+
+    public void setHeureArrivee(String heureArrivee) {
+        this.heureArrivee.set(heureArrivee);
+    }
+
+    public StringProperty heureArriveeProperty() {
+        return heureArrivee;
     }
 
     public String getDescription() {
-        return description;
+        return description.get();
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description.set(description);
     }
 
-    public int getHeureArrive() {
-        return heureArrive;
+    public StringProperty descriptionProperty() {
+        return description;
     }
 
-    public void setHeureArrive(int heureArrive) {
-        this.heureArrive = heureArrive;
+    public String getDecision() {
+        return decision.get();
     }
 
-    public String getDate() {
-        return date;
+    public void setDecision(String decision) {
+        this.decision.set(decision);
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public StringProperty decisionProperty() {
+        return decision;
     }
 
-    public int getRef_patient() {
-        return ref_patient;
+    public String getNomPatient() {
+        return nomPatient.get();
     }
 
-    public void setRef_patient(int ref_patient) {
-        this.ref_patient = ref_patient;
+    public void setNomPatient(String nomPatient) {
+        this.nomPatient.set(nomPatient);
+    }
+
+    public StringProperty nomPatientProperty() {
+        return nomPatient;
     }
 }
