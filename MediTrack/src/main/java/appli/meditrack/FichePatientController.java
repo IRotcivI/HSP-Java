@@ -3,11 +3,11 @@ package appli.meditrack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.FichePatient;
 import repository.FichePatientRepository;
+import session.SessionManager;
 
 import java.sql.SQLException;
 
@@ -18,9 +18,6 @@ public class FichePatientController {
 
     @FXML
     private TextField emailField;
-
-    @FXML
-    private ChoiceBox<?> graviteChoiceBox;
 
     @FXML
     private TextField nomField;
@@ -52,7 +49,7 @@ public class FichePatientController {
     @FXML
     private Label labelReussi;
 
-    private final FichePatientRepository fichePatientRepository = new FichePatientRepository() ;
+    private final FichePatientRepository fichePatientRepository = new FichePatientRepository();
 
     @FXML
     void enregistrerFichePatient(ActionEvent event) throws SQLException {
@@ -62,13 +59,12 @@ public class FichePatientController {
         String pays = paysField.getText();
         String prenom = prenomField.getText();
         String rue = rueField.getText();
-        int securiteSociale = Integer.parseInt(securiteSocialeField.getText());
+        String securiteSocialeText = securiteSocialeField.getText();
         String telephone = telephoneField.getText();
         String ville = villeField.getText();
         String voie = voieField.getText();
-        int gravite = graviteChoiceBox.getSelectionModel().getSelectedIndex();
 
-        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || telephone.isEmpty() || rue.isEmpty() || ville.isEmpty()) {
+        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || telephone.isEmpty() || rue.isEmpty() || ville.isEmpty() || securiteSocialeText.isEmpty()) {
             labelErreur.setText("Tous les champs obligatoires doivent être remplis.");
             return;
         }
@@ -88,11 +84,18 @@ public class FichePatientController {
             return;
         }
 
-        FichePatient fiche = new FichePatient(nom,securiteSociale,prenom,email,voie,telephone,rue,ville,pays,2);
+        if (!securiteSocialeText.matches("^\\d{13}$")) {
+            labelErreur.setText("Le numéro de sécurité sociale doit contenir 13 chiffres.");
+            return;
+        }
+
+        long securiteSociale = Long.parseLong(securiteSocialeText);
+
+        FichePatient fiche = new FichePatient(nom, securiteSociale, prenom, email, voie, telephone, rue, ville, pays, SessionManager.getId());
         boolean status = fichePatientRepository.creerUneFiche(fiche);
 
         if (status) {
-            labelReussi.setText("Fiche patient créer");
+            labelReussi.setText("Fiche patient créée");
             labelErreur.setText("");
             emailField.clear();
             nomField.clear();
@@ -103,10 +106,8 @@ public class FichePatientController {
             telephoneField.clear();
             villeField.clear();
             voieField.clear();
-            graviteChoiceBox.getSelectionModel().clearSelection();
         } else {
-            labelErreur.setText("Erreur de creation");
+            labelErreur.setText("Erreur de création");
         }
     }
-
 }

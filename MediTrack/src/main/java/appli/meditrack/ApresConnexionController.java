@@ -52,8 +52,13 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirGestionDossiers(ActionEvent event) {
-
+    void ouvrirGestionDossiers(ActionEvent event) throws IOException {
+        Parent gestion_dossier = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesPatients/GererLesDossiers.fxml"));
+        Scene scene = new Scene(gestion_dossier);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
