@@ -32,31 +32,44 @@ public class UtilisateurRepository {
         return false;
     }
 
-    public boolean inscrireUtilisateur(Utilisateur utilisateur) throws SQLException {
-        Connection maConnexion = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/hsp_java", "root", ""
-        );
-        String nom = utilisateur.getNom();
-        String prenom = utilisateur.getPrenom();
-        String email = utilisateur.getEmail();
-        String mdp = utilisateur.getMdp();
-        String role = utilisateur.getRole();
+    public boolean ajouterUtilisateur(Utilisateur utilisateur) throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/hsp_java";
+        String user = "root";
+        String password = "";
 
-        PreparedStatement requetePrepareInsert = maConnexion.prepareStatement("INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role) VALUES (?, ?, ?, ?, ?)");
+        // Requête pour récupérer l'ID du rôle
+        String getRoleIdQuery = "SELECT id FROM Role WHERE nom = ?";
 
-            requetePrepareInsert.setString(1, utilisateur.getNom());
-            requetePrepareInsert.setString(2, utilisateur.getPrenom());
-            requetePrepareInsert.setString(3, utilisateur.getEmail());
-            requetePrepareInsert.setString(4, utilisateur.getmotDePasse());
-            requetePrepareInsert.setString(5, utilisateur.getRole());
+        // Requête pour insérer l'utilisateur
+        String insertUserQuery = "INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role_id) VALUES (?, ?, ?, ?, ?)";
 
-            int rowsInserted = requetePrepareInsert.executeUpdate();
+        try (Connection maConnexion = DriverManager.getConnection(url, user, password);
+             PreparedStatement roleStatement = maConnexion.prepareStatement(getRoleIdQuery);
+             PreparedStatement insertStatement = maConnexion.prepareStatement(insertUserQuery)) {
+
+            // 1. Récupérer l'ID du rôle
+            roleStatement.setString(1, utilisateur.getRole());
+            ResultSet roleResult = roleStatement.executeQuery();
+
+            if (!roleResult.next()) {
+                System.out.println("Erreur : Rôle non trouvé !");
+                return false; // Si le rôle n'existe pas, on ne peut pas créer l'utilisateur
+            }
+            int roleId = roleResult.getInt("id");
+
+            // 2. Insérer l'utilisateur avec l'ID du rôle
+            insertStatement.setString(1, utilisateur.getNom());
+            insertStatement.setString(2, utilisateur.getPrenom());
+            insertStatement.setString(3, utilisateur.getEmail());
+            insertStatement.setString(4, utilisateur.getMdp());
+            insertStatement.setInt(5, roleId);
+
+            int rowsInserted = insertStatement.executeUpdate();
             return rowsInserted > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-
-
+    }
 }

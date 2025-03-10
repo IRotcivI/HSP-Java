@@ -36,6 +36,17 @@ public class ApresConnexionController {
     }
 
     @FXML
+    void ouvrirFormulaireAjoutUtilisateur(ActionEvent event) throws IOException {
+        Parent fiche_patient = FXMLLoader.load(getClass().getResource("/Fxml/InscriptionPage.fxml"));
+        Scene scene = new Scene(fiche_patient);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    @FXML
     void ouvrirDemandes(ActionEvent event) {
 
     }

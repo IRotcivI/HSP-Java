@@ -22,6 +22,9 @@ public class ConnexionController {
     private Button btnValider;
 
     @FXML
+    private Button btnInscription;
+
+    @FXML
     private TextField utilisateurId;
 
     @FXML
@@ -59,6 +62,7 @@ public class ConnexionController {
         } else {
             mauvaisMdp.setText("Identifiants incorrects.");
         }
+
     }
 
 }

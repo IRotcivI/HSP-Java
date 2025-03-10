@@ -25,6 +25,9 @@
                     <MenuItem onAction="#ouvrirListeHospitalisations" text="Liste des hospitalisations" />
                     <MenuItem onAction="#ouvrirLiberationChambre" text="Libérer une chambre" />
                 </Menu>
+                <Menu text="Gestion des utilisateurs">
+                    <MenuItem onAction="#ouvrirFormulaireAjoutUtilisateur" text="Ajout utilisateur" />
+                </Menu>
                 <Menu text="Gestion des stocks">
                     <MenuItem onAction="#ouvrirListeProduits" text="Liste des produits" />
                     <MenuItem onAction="#ouvrirGestionProduits" text="Ajouter/Modifier un produit" />
