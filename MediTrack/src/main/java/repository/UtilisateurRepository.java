@@ -33,36 +33,19 @@ public class UtilisateurRepository {
     }
 
     public boolean ajouterUtilisateur(Utilisateur utilisateur) throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/hsp_java";
-        String user = "root";
-        String password = "";
 
-        // Requête pour récupérer l'ID du rôle
-        String getRoleIdQuery = "SELECT id FROM Role WHERE nom = ?";
+        String insertUserQuery = "INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role) VALUES (?, ?, ?, ?, ?)";
 
-        // Requête pour insérer l'utilisateur
-        String insertUserQuery = "INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role_id) VALUES (?, ?, ?, ?, ?)";
-
-        try (Connection maConnexion = DriverManager.getConnection(url, user, password);
-             PreparedStatement roleStatement = maConnexion.prepareStatement(getRoleIdQuery);
+        Database database = new Database();
+        try (Connection maConnexion = database.getConnection();
              PreparedStatement insertStatement = maConnexion.prepareStatement(insertUserQuery)) {
 
-            // 1. Récupérer l'ID du rôle
-            roleStatement.setString(1, utilisateur.getRole());
-            ResultSet roleResult = roleStatement.executeQuery();
-
-            if (!roleResult.next()) {
-                System.out.println("Erreur : Rôle non trouvé !");
-                return false; // Si le rôle n'existe pas, on ne peut pas créer l'utilisateur
-            }
-            int roleId = roleResult.getInt("id");
-
-            // 2. Insérer l'utilisateur avec l'ID du rôle
+            // 🔹 Insérer l'utilisateur avec le rôle en texte
             insertStatement.setString(1, utilisateur.getNom());
             insertStatement.setString(2, utilisateur.getPrenom());
             insertStatement.setString(3, utilisateur.getEmail());
-            insertStatement.setString(4, utilisateur.getMdp());
-            insertStatement.setInt(5, roleId);
+            insertStatement.setString(4, utilisateur.getMdp()); // Tu peux aussi hacher le mot de passe ici
+            insertStatement.setString(5, utilisateur.getRole()); // Stocke le rôle en tant que texte
 
             int rowsInserted = insertStatement.executeUpdate();
             return rowsInserted > 0;
@@ -72,4 +55,5 @@ public class UtilisateurRepository {
             return false;
         }
     }
+
 }

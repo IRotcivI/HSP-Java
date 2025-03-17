@@ -18,9 +18,9 @@ public class FournisseurRepository {
             stmt.setString(1, fournisseur.getNom());
             stmt.setString(2, fournisseur.getVoie());
             stmt.setString(3, fournisseur.getRue());
-            stmt.setString(3, fournisseur.getVille());
-            stmt.setString(3, fournisseur.getTelephone());
-            stmt.setString(4, fournisseur.getEmail());
+            stmt.setString(4, fournisseur.getVille());
+            stmt.setString(5, fournisseur.getTelephone());
+            stmt.setString(6, fournisseur.getEmail());
 
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;

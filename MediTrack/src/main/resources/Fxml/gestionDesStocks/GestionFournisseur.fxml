@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.GestionFournisseurController">
+   <children>
+      <Label layoutX="222.0" layoutY="24.0" text="Gestion Des Fournisseurs">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="29.0" layoutY="361.0" mnemonicParsing="false" text="Ajouter"  onAction="#ouvrirAjouterFournisseur" />
+      <Button layoutX="91.0" layoutY="361.0" mnemonicParsing="false" text="Modifier" />
+      <Button layoutX="159.0" layoutY="361.0" mnemonicParsing="false" text="Supprimer" />
+      <TableView layoutX="73.0" layoutY="60.0" prefHeight="292.0" prefWidth="452.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Nom" />
+          <TableColumn prefWidth="75.0" text="Voie" />
+            <TableColumn prefWidth="75.0" text="Rue" />
+            <TableColumn prefWidth="75.0" text="Ville" />
+            <TableColumn prefWidth="75.0" text="Téléphone" />
+            <TableColumn prefWidth="75.0" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -15,4 +15,5 @@ module appli.meditrack {
     exports appli.meditrack;
     opens model to javafx.base;
     opens Fxml.gestionDesStocks to javafx.fxml;
+    exports Fxml.gestionDesStocks;
 }

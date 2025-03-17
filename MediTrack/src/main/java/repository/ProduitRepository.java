@@ -3,7 +3,7 @@ package repository;
 import database.Database;
 import model.Produit;
 import java.sql.*;
-import java.util.ArrayList;
+        import java.util.ArrayList;
 import java.util.List;
 
 public class ProduitRepository {
@@ -20,7 +20,6 @@ public class ProduitRepository {
             stmt.setString(3, produit.getNiveauDangerosite());
 
             stmt.executeUpdate();
-            System.out.println("Produit ajouté !");
         } catch (SQLException e) {
             e.printStackTrace();
         }

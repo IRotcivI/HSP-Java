@@ -10,64 +10,55 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="10" prefHeight="268.0" prefWidth="342.0" style="-fx-padding: 20;" vgap="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.InscriptionController">
-
-    <Label text="Nom:" GridPane.rowIndex="2" />
-    <TextField fx:id="nomField" prefHeight="26.0" prefWidth="22.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-
-    <Label text="Prénom:" GridPane.rowIndex="3" />
-    <TextField fx:id="prenomField" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-
-    <Label text="Email:" GridPane.rowIndex="4" />
-    <TextField fx:id="emailField" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-
-    <Label text="Mot de passe:" GridPane.rowIndex="5" />
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-
-    <Label text="Confirmer le mot de passe:" GridPane.rowIndex="6" />
-    <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-
-    <Label text="Rôle:" GridPane.rowIndex="7" />
-    <ComboBox fx:id="roleComboBox" GridPane.columnIndex="4" GridPane.rowIndex="7">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Admin" />
-                <String fx:value="Médecin" />
-                <String fx:value="Patient" />
-                <String fx:value="Secretaire" />
-            </FXCollections>
-        </items>
-    </ComboBox>
-
-    <Label fx:id="messageLabel" style="-fx-text-fill: red;" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-
-    <Button onAction="#inscrireUtilisateur" text="S'inscrire" GridPane.columnIndex="4" GridPane.rowIndex="9" />
-   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout Utilisateur" textAlignment="CENTER" wrappingWidth="158.5495023727417" GridPane.columnIndex="3" GridPane.rowIndex="1">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Text>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints maxWidth="145.60001220703126" minWidth="4.800024414062506" prefWidth="67.19998779296876" />
-      <ColumnConstraints maxWidth="214.1999755859375" minWidth="73.39998779296874" prefWidth="151.80001220703124" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-
-</GridPane>
+<VBox alignment="CENTER" prefHeight="448.0" prefWidth="524.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.InscriptionController">
+    <!-- Titre en dehors du tableau -->
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'utilisateur">
+        <font>
+            <Font size="22.0" />
+        </font>
+    </Text>
+    <!-- Le tableau d'inscription -->
+    <GridPane alignment="center" hgap="10" prefHeight="315.0" prefWidth="524.0" style="-fx-padding: 20;" vgap="10">
+        <Label text="Nom:" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Prénom:" GridPane.rowIndex="1" />
+        <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Email:" GridPane.rowIndex="2" />
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Mot de passe:" GridPane.rowIndex="3" />
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Confirmer le mot de passe:" GridPane.rowIndex="4" />
+        <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="Rôle:" GridPane.rowIndex="5" />
+        <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Admin" />
+                    <String fx:value="Médecin" />
+                    <String fx:value="Patient" />
+                    <String fx:value="Secretaire" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label fx:id="messageLabel" style="-fx-text-fill: red;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Button onAction="#inscrireUtilisateur" text="S'inscrire" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+</VBox>

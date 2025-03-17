@@ -1,28 +1,52 @@
 package appli.meditrack;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import model.Produit;
 import repository.FournisseurRepository;
 import model.Fournisseur;
+import repository.ProduitRepository;
 
-import java.sql.SQLException;
+import java.io.IOException;
 
-public class FournisseurController {
+public class GestionFournisseurController {
 
-    @FXML private TextField nom;
-    @FXML private TextField voie;
-    @FXML private TextField rue;
-    @FXML private TextField ville;
-    @FXML private TextField telephone;
-    @FXML private TextField email;
+    @FXML
+    private TextField nom;
+    @FXML
+    private TextField voie;
+    @FXML
+    private TextField rue;
+    @FXML
+    private TextField ville;
+    @FXML
+    private TextField telephone;
+    @FXML
+    private TextField email;
 
-    @FXML private Label labelErreur;
-    @FXML private Label labelReussi;
-    @FXML private Button btnAjouter;
+    @FXML
+    private Label labelErreur;
+    @FXML
+    private Label labelReussi;
+    @FXML
+    private Button btnAjouter;
 
     private final FournisseurRepository fournisseurRepository = new FournisseurRepository();
+
+    @FXML
+    void ouvrirAjouterFournisseur(ActionEvent event) throws IOException {
+        Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/CreationFournisseur.fxml"));
+        Scene scene = new Scene(gestion_produit);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     public void ajouterFournisseur() {
@@ -59,7 +83,7 @@ public class FournisseurController {
         boolean status = fournisseurRepository.ajouterFournisseur(fournisseur);
 
         if (status) {
-            labelReussi.setText("Fournisseur ajouté avec succès !");
+            labelReussi.setText("Fournisseur ajouté avec succès, vous pouvez ajouter un autre fournisseur ou fermer cette page.");
             labelErreur.setText("");  // Effacer le message d'erreur si l'ajout réussit
 
             // Réinitialisation des champs
@@ -74,4 +98,5 @@ public class FournisseurController {
         }
 
     }
+
 }

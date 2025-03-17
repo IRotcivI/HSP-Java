@@ -9,7 +9,18 @@ public class Fournisseur {
     private String telephone;
     private String email;
 
+    // Constructeur avec id (utile pour récupérer depuis la BDD)
+    public Fournisseur(int id, String nom, String voie, String rue, String ville, String telephone, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.voie = voie;
+        this.rue = rue;
+        this.ville = ville;
+        this.telephone = telephone;
+        this.email = email;
+    }
 
+    // Constructeur sans id (utile pour ajouter un fournisseur)
     public Fournisseur(String nom, String voie, String rue, String ville, String telephone, String email) {
         this.nom = nom;
         this.voie = voie;
@@ -19,6 +30,7 @@ public class Fournisseur {
         this.email = email;
     }
 
+    // Getters et Setters
     public int getId() {
         return id;
     }
@@ -73,5 +85,10 @@ public class Fournisseur {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return nom + " - " + ville;
     }
 }
