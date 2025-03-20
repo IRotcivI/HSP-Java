@@ -82,13 +82,23 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirLiberationChambre(ActionEvent event) {
-
+    void ouvrirLiberationChambre(ActionEvent event) throws IOException {
+        Parent liberer_chambre = FXMLLoader.load(getClass().getResource("/Fxml/Hospitalisation/Chambre.fxml"));
+        Scene scene = new Scene(liberer_chambre);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void ouvrirListeHospitalisations(ActionEvent event) {
-
+    void ouvrirListeHospitalisations(ActionEvent event) throws IOException {
+        Parent ajouter_chambre = FXMLLoader.load(getClass().getResource("/Fxml/Hospitalisation/GestionChambre.fxml"));
+        Scene scene = new Scene(ajouter_chambre);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
