@@ -1,19 +1,24 @@
 package model;
 
-
-import javafx.beans.binding.BooleanExpression;
-import javafx.beans.value.ObservableValue;
-
 public class Chambre {
-
-    public int numero;
     private String type;
+    private int numero;
     private boolean disponible;
 
-    public Chambre(int numero , String type , boolean disponible ) {
-        this.numero = numero;
+
+    public Chambre(String type, int numero, boolean disponible) {
         this.type = type;
+        this.numero = numero;
         this.disponible = disponible;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getNumero() {
@@ -24,31 +29,11 @@ public class Chambre {
         this.numero = numero;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public boolean isDisponible() {
         return disponible;
     }
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
-    }
-
-    public BooleanExpression numero() {
-        return null;
-    }
-
-    public BooleanExpression disponible() {
-        return null;
-    }
-
-    public ObservableValue<String> type() {
-        return null;
     }
 }
