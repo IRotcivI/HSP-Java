@@ -11,8 +11,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Fournisseur;
 import model.Produit;
+import model.ProduitFournisseur;
 import repository.FournisseurRepository;
 import repository.ProduitRepository;
+import repository.Produit_FournisseurRepository;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -30,6 +33,10 @@ public class GestionStockController {
     @FXML private TableView<Fournisseur> tableFournisseurs;
     @FXML private TableColumn<Fournisseur, Integer> colId;
     @FXML private TableColumn<Fournisseur, String> colNom;
+
+    @FXML private TextField prixTextField;
+    @FXML private Button AssocierButton;
+    @FXML private Label messageLabel;
 
     /**
      * Initialise les données des tables
@@ -66,6 +73,52 @@ public class GestionStockController {
     /**
      * Ouvre la fenêtre d'ajout de produit
      */
+
+
+    private final Produit_FournisseurRepository produitFournisseurRepository = new Produit_FournisseurRepository();
+
+    @FXML
+    private void associerProduitFournisseur() {
+        // Récupération du produit et du fournisseur sélectionnés
+        Produit produitSelectionne = tableProduits.getSelectionModel().getSelectedItem();
+        Fournisseur fournisseurSelectionne = tableFournisseurs.getSelectionModel().getSelectedItem();
+
+        if (produitSelectionne == null || fournisseurSelectionne == null) {
+            messageLabel.setText("Veuillez selectionner un produit et un fournisseur !");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Récupération du prix saisi
+        String prixTexte = prixTextField.getText();
+        double prix;
+
+        try {
+            prix = Double.parseDouble(prixTexte);
+        } catch (NumberFormatException e) {
+            messageLabel.setText("Veuillez entrer un prix valide !");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        // Création de l'objet ProduitFournisseur et insertion dans la base
+        ProduitFournisseur produitFournisseur = new ProduitFournisseur(
+                produitSelectionne.getId(),
+                fournisseurSelectionne.getId(),
+                prix
+        );
+
+        boolean success = produitFournisseurRepository.ajouterProduitFournisseur(produitFournisseur);
+
+        if (success) {
+            messageLabel.setText("Associer avec succes !");
+            messageLabel.setStyle("-fx-text-fill: green;");
+        } else {
+            messageLabel.setText("Erreur lors de l'association, veuillez contatcter le support.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+        }
+    }
+
     @FXML
     void ouvrirAjouterProduit() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/gestionDesStocks/AjoutProduits.fxml"));
