@@ -37,15 +37,7 @@
                 </items>
             </ComboBox>
         </HBox>
-    <HBox>
-        <center>
-            <StackPane fx:id="contenuDynamique">
-                <children>
-                    <Label style="-fx-font-size: 16px;" text="Bienvenue dans l'application MediTrack !" />
-                </children>
-            </StackPane>
-        </center>
-    </HBox>
+
 
         <HBox spacing="10">
             <Button text="Créer" fx:id="creerProduitButton" />
