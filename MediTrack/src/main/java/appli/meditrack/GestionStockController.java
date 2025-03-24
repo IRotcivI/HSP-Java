@@ -31,8 +31,13 @@ public class GestionStockController {
     @FXML private TableColumn<Produit, String> colNiveauDangerosite;
 
     @FXML private TableView<Fournisseur> tableFournisseurs;
-    @FXML private TableColumn<Fournisseur, Integer> colId;
     @FXML private TableColumn<Fournisseur, String> colNom;
+    @FXML private TableColumn<Fournisseur, String> colVoie;
+    @FXML private TableColumn<Fournisseur, String> colRue;
+    @FXML private TableColumn<Fournisseur, String> colVille;
+    @FXML private TableColumn<Fournisseur, String> colTelephone;
+    @FXML private TableColumn<Fournisseur, String> colEmail;
+
 
     @FXML private TextField prixTextField;
     @FXML private Button AssocierButton;
@@ -56,8 +61,12 @@ public class GestionStockController {
     }
 
     private void setupTableFournisseurs() {
-        colId.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         colNom.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
+        colVoie.setCellValueFactory(cellData -> cellData.getValue().voieProperty());
+        colRue.setCellValueFactory(cellData -> cellData.getValue().rueProperty());
+        colVille.setCellValueFactory(cellData -> cellData.getValue().villeProperty());
+        colTelephone.setCellValueFactory(cellData -> cellData.getValue().telephoneProperty());
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
     }
 
     private void loadProduits() {
