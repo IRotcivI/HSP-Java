@@ -37,16 +37,15 @@
                 </items>
             </ComboBox>
         </HBox>
-        <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Admin" />
-                    <String fx:value="Médecin" />
-                    <String fx:value="Patient" />
-                    <String fx:value="Secretaire" />
-                </FXCollections>
-            </items>
-        </ComboBox>
+    <HBox>
+        <center>
+            <StackPane fx:id="contenuDynamique">
+                <children>
+                    <Label style="-fx-font-size: 16px;" text="Bienvenue dans l'application MediTrack !" />
+                </children>
+            </StackPane>
+        </center>
+    </HBox>
 
         <HBox spacing="10">
             <Button text="Créer" fx:id="creerProduitButton" />
