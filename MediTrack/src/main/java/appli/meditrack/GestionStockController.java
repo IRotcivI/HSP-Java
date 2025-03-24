@@ -14,7 +14,7 @@ import model.Produit;
 import model.ProduitFournisseur;
 import repository.FournisseurRepository;
 import repository.ProduitRepository;
-import repository.Produit_FournisseurRepository;
+import repository.ProduitFournisseurRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -84,7 +84,7 @@ public class GestionStockController {
      */
 
 
-    private final Produit_FournisseurRepository produitFournisseurRepository = new Produit_FournisseurRepository();
+    private final ProduitFournisseurRepository produitFournisseurRepository = new ProduitFournisseurRepository();
 
     @FXML
     private void associerProduitFournisseur() {

@@ -25,6 +25,10 @@ public class Fournisseur {
         this.email = new SimpleStringProperty(email);
     }
 
+    public Fournisseur(String nom) {
+        this.nom = new SimpleStringProperty(nom);
+    }
+
     // Constructeur sans id (utile pour ajouter un fournisseur)
     public Fournisseur(String nom, String voie, String rue, String ville, String telephone, String email) {
         this.nom = new SimpleStringProperty(nom);

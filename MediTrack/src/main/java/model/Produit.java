@@ -25,6 +25,10 @@ public class Produit {
         this.description = new SimpleStringProperty(description);
         this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
     }
+    public Produit(String libelle) {
+        this.libelle = new SimpleStringProperty(libelle);
+    }
+
 
     // Getters et Setters pour les propriétés JavaFX
     public IntegerProperty idProperty() {
