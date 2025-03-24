@@ -1,5 +1,6 @@
 package appli.meditrack;
 
+import database.Database;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,21 +23,18 @@ public class TableauChambresController {
     private ObservableList<Chambre> data;
 
     @FXML
-    public void initialize() {
+        public void initialize() {
+
+            numeroCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
+            typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            disponibleCol.setCellValueFactory(new PropertyValueFactory<>("disponible"));
 
 
-        numeroCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        disponibleCol.setCellValueFactory(new PropertyValueFactory<>("disponible"));
+            Database db = new Database();
+            data = FXCollections.observableArrayList(db.getChambres());
 
 
-        data = FXCollections.observableArrayList(
-                new Chambre("Simple", 101, true),
-                new Chambre("Double", 102, false),
-                new Chambre("Suite", 103, true)
-        );
+            chambreTable.setItems(data);
+        }
 
-
-        chambreTable.setItems(data);
-    }
 }
