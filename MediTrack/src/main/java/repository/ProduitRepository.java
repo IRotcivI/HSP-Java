@@ -2,41 +2,44 @@ package repository;
 
 import database.Database;
 import model.Produit;
+
 import java.sql.*;
-        import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProduitRepository {
 
-    public static void ajouterProduit(Produit produit) {
+    private final Database database = new Database();
+
+    public boolean ajouterProduit(Produit produit) {
         String sql = "INSERT INTO produit (libelle, description, niveauDangerosité) VALUES (?, ?, ?)";
 
-        Database database = new Database();
-        Connection connection = database.getConnection();
+        try (Connection connection = database.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produit.getLibelle());
             stmt.setString(2, produit.getDescription());
             stmt.setString(3, produit.getNiveauDangerosite());
 
-            stmt.executeUpdate();
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public static List<Produit> getProduits() {
+    public List<Produit> getProduits() {
         List<Produit> produits = new ArrayList<>();
-        String sql = "SELECT * FROM produit";
+        String sql = "SELECT id_produit, libelle, description, niveauDangerosité FROM produit";
 
-        Database database = new Database();
-        Connection connection = database.getConnection();
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
+        try (Connection connection = database.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Produit produit = new Produit(
+                        rs.getInt("id_produit"),  // Ajout de l'ID
                         rs.getString("libelle"),
                         rs.getString("description"),
                         rs.getString("niveauDangerosité")
@@ -48,22 +51,19 @@ public class ProduitRepository {
         }
         return produits;
     }
-    public static void supprimerProduit(int id) {
+
+    public boolean supprimerProduit(int id) {
         String sql = "DELETE FROM produit WHERE id_produit = ?";
 
-        Database database = new Database();
-        Connection connection = database.getConnection();
+        try (Connection connection = database.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            stmt.executeUpdate();
-            System.out.println("Produit supprimé !");
+            int rowsDeleted = stmt.executeUpdate();
+            return rowsDeleted > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
-
-
-
-
 }
