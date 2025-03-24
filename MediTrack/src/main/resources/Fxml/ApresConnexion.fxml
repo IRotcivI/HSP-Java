@@ -11,7 +11,7 @@
     <top>
         <MenuBar>
             <menus>
-                <Menu text="Fichier">
+                <Menu text="Option">
                     <MenuItem onAction="#deconnexion" text="Déconnexion" />
                     <MenuItem onAction="#quitter" text="Quitter" />
                 </Menu>
