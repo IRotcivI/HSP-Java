@@ -2,10 +2,8 @@ package database;
 
 import model.Chambre;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
+import java.sql.*;
+import java.util.ArrayList;
 
 
 public class Database {
@@ -49,4 +47,26 @@ public class Database {
             return false;
         }
     }
-}
+    public ArrayList<Chambre> getChambres() {
+        ArrayList<Chambre> chambres = new ArrayList<>();
+        String query = "SELECT * FROM chambres";
+
+        try (Connection connection = getConnection();
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                String type = rs.getString("type");
+                int numero = rs.getInt("numero");
+                boolean disponible = rs.getBoolean("disponible");
+
+                chambres.add(new Chambre(type, numero, disponible));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return chambres;
+
+    }}
