@@ -39,6 +39,9 @@ public class Fournisseur {
         this.email = new SimpleStringProperty(email);
     }
 
+    public Fournisseur(int idFournisseur, String nom) {
+    }
+
     // Getters et Setters pour les propriétés JavaFX
     public IntegerProperty idProperty() {
         return id;

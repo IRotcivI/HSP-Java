@@ -29,9 +29,8 @@
                     <MenuItem onAction="#ouvrirFormulaireAjoutUtilisateur" text="Ajout utilisateur" />
                 </Menu>
                 <Menu text="Gestion des stocks">
-                    <MenuItem onAction="#ouvrirListeProduits" text="Liste des produits" />
-                    <MenuItem onAction="#ouvrirGestionProduits" text="Ajouter/Modifier un produit" />
-                    <MenuItem onAction="#ouvrirGestionFournisseur" text="Ajouter/Modifier un fournisseur" />
+                    <MenuItem onAction="#ouvrirGestionStock" text="Gestion du stock" />
+                    <MenuItem onAction="#ouvrirListeStock" text="Liste du stock" />
                     <MenuItem onAction="#ouvrirDemandes" text="Gérer les demandes" />
                     <MenuItem onAction="#ouvrirReapprovisionnement" text="Réapprovisionnement" />
                 </Menu>

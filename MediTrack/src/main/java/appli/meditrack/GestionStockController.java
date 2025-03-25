@@ -114,6 +114,8 @@ public class GestionStockController {
         ProduitFournisseur produitFournisseur = new ProduitFournisseur(
                 produitSelectionne.getId(),
                 fournisseurSelectionne.getId(),
+                produitSelectionne.getLibelle(),
+                fournisseurSelectionne.getNom(),
                 prix
         );
 
