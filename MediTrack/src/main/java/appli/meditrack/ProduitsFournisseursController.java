@@ -3,6 +3,7 @@ package appli.meditrack;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.ProduitFournisseur;
@@ -30,14 +31,17 @@ public class ProduitsFournisseursController {
     }
 
     private void setupTableAssociations() {
-        colProduitLibelle.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getLibelle()));
-        colFournisseurNom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFournisseur().getNom()));
+        // Lier les cellules de la table aux propriétés des objets ProduitFournisseur
+        colProduitLibelle.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLibelle()));
+        colFournisseurNom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
         colPrix.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
     }
 
     private void loadAssociations() {
+        // Récupérer les associations depuis le repository
         List<ProduitFournisseur> associations = produitFournisseurRepository.getProduitFournisseurs();
-        tableAssociations.setItems(FXCollections.observableArrayList(associations));
+        // Charger les associations dans la TableView
+        ObservableList<ProduitFournisseur> observableAssociations = FXCollections.observableArrayList(associations);
+        tableAssociations.setItems(observableAssociations);
     }
-
 }

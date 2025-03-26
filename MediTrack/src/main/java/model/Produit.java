@@ -29,6 +29,9 @@ public class Produit {
         this.libelle = new SimpleStringProperty(libelle);
     }
 
+    public Produit(int idProduit, String libelle) {
+    }
+
 
     // Getters et Setters pour les propriétés JavaFX
     public IntegerProperty idProperty() {

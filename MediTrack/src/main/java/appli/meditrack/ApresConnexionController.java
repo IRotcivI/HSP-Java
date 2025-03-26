@@ -3,8 +3,10 @@ package appli.meditrack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -16,9 +18,20 @@ public class ApresConnexionController {
     private StackPane contenuDynamique;
 
     @FXML
-    void deconnexion(ActionEvent event) {
+    void deconnexion(ActionEvent event) throws IOException {
+        // Charger la nouvelle page
+        Parent deco = FXMLLoader.load(getClass().getResource("/Fxml/ConnexionPage.fxml"));
+        Scene scene = new Scene(deco);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
 
+        Stage currentStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        currentStage.close();
     }
+
+
 
     @FXML
     void ouvrirAPropos(ActionEvent event) {
@@ -62,7 +75,7 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirGestionProduits(ActionEvent event) throws IOException {
+    void ouvrirGestionStock(ActionEvent event) throws IOException {
         Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/GestionStock.fxml"));
         Scene scene = new Scene(gestion_produit);
         Stage stage = new Stage();
@@ -72,8 +85,8 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirGestionFournisseur(ActionEvent event) throws IOException {
-        Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/GestionFournisseur.fxml"));
+    void ouvrirListeStock(ActionEvent event) throws IOException {
+        Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/ProduitsFournisseurs.fxml"));
         Scene scene = new Scene(gestion_produit);
         Stage stage = new Stage();
         stage.setTitle("MediTrack");
@@ -138,7 +151,7 @@ public class ApresConnexionController {
 
     @FXML
     void quitter(ActionEvent event) {
-
+        System.exit(0);
     }
 
 }
