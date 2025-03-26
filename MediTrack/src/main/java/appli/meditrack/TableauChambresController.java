@@ -18,9 +18,7 @@ public class TableauChambresController {
     @FXML
     private TableColumn<Chambre, String> typeCol;
     @FXML
-    private TableColumn<Chambre, Boolean> disponibleCol;
-
-    private ObservableList<Chambre> data;
+    private TableColumn<Chambre, String> disponibleCol;
 
     @FXML
         public void initialize() {
@@ -31,7 +29,7 @@ public class TableauChambresController {
 
 
             Database db = new Database();
-            data = FXCollections.observableArrayList();
+        ObservableList<Chambre> data = FXCollections.observableArrayList();
 
 
             chambreTable.setItems(data);

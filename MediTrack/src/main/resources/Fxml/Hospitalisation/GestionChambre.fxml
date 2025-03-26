@@ -12,9 +12,9 @@
             prefHeight="300.0" prefWidth="400.0">
 
     <VBox alignment="CENTER" spacing="15" layoutX="50" layoutY="50">
-        <TextField fx:id="typeField" promptText="Type de chambre" />
         <TextField fx:id="numeroField" promptText="Numéro de chambre" />
-        <CheckBox fx:id="disponibleCheckBox" text="Disponible" />
+        <TextField fx:id="typeField" promptText="Type de chambre" />
+        <TextField fx:id="disponibleField" promptText="Disponible" />
         <Button text="Ajouter Chambre" onAction="#ajouterChambre" />
     </VBox>
 

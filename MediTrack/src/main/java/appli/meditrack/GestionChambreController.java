@@ -13,22 +13,22 @@ import java.sql.SQLException;
 public class GestionChambreController {
 
     @FXML
-    private TextField typeField;
-
-    @FXML
     private TextField numeroField;
 
     @FXML
-    private CheckBox disponibleCheckBox;
+    private TextField typeField;
+
+    @FXML
+    private TextField disponibleField;
 
 
     @FXML
     public void ajouterChambre() throws SQLException {
-        String type = typeField.getText();
         int numero = Integer.parseInt(numeroField.getText());
-        int disponible = disponibleCheckBox.isSelected() ? 1 : 0;  // Conversion en 1 ou 0
+        String type = typeField.getText();
+        String disponible = disponibleField.getText();
 
-        if (ChambreRepository.ajouterChambre(numero, type, disponible)) {
+        if (ChambreRepository.ajouterChambre(numero , type , disponible)) {
             System.out.println("Chambre ajoutée avec succès !");
         } else {
             System.out.println("Une erreur est survenue lors de l'ajout de la chambre.");
