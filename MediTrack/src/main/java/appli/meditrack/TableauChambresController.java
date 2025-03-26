@@ -31,10 +31,14 @@ public class TableauChambresController {
 
 
             Database db = new Database();
-            data = FXCollections.observableArrayList(db.getChambres());
+            data = FXCollections.observableArrayList();
 
 
             chambreTable.setItems(data);
         }
+
+    private void getChambre() {
+
+    }
 
 }

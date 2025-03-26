@@ -1,8 +1,8 @@
 package model;
 
 public class Chambre {
-    private String type;
-    private int numero;
+    private static String type;
+    private static int numero;
     private boolean disponible;
 
 
@@ -13,7 +13,7 @@ public class Chambre {
     }
 
 
-    public String getType() {
+    public static String getType() {
         return type;
     }
 
@@ -21,7 +21,7 @@ public class Chambre {
         this.type = type;
     }
 
-    public int getNumero() {
+    public static int getNumero() {
         return numero;
     }
 
@@ -36,4 +36,6 @@ public class Chambre {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+
 }

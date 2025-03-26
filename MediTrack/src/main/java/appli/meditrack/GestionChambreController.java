@@ -1,12 +1,14 @@
 package appli.meditrack;
 
-import database.Database;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import model.Chambre;
+import repository.ChambreRepository;
+
+import java.sql.SQLException;
 
 public class GestionChambreController {
 
@@ -21,27 +23,18 @@ public class GestionChambreController {
 
 
     @FXML
-    public void ajouterChambre() {
+    public void ajouterChambre() throws SQLException {
         String type = typeField.getText();
-        int numero;
-        try {
-            numero = Integer.parseInt(numeroField.getText());
-        } catch (NumberFormatException e) {
-            showError("Le numéro de chambre doit être un nombre.");
-            return;
-        }
+        int numero = Integer.parseInt(numeroField.getText());
+        int disponible = disponibleCheckBox.isSelected() ? 1 : 0;  // Conversion en 1 ou 0
 
-        boolean disponible = disponibleCheckBox.isSelected();
-
-        Chambre chambre = new Chambre(type, numero, disponible);
-
-        Database db = new Database();
-        if (db.ajouterChambre(chambre)) {
-            showInfo("Chambre ajoutée avec succès !");
+        if (ChambreRepository.ajouterChambre(numero, type, disponible)) {
+            System.out.println("Chambre ajoutée avec succès !");
         } else {
-            showError("Une erreur est survenue lors de l'ajout de la chambre.");
+            System.out.println("Une erreur est survenue lors de l'ajout de la chambre.");
         }
     }
+
 
 
     private void showInfo(String message) {
