@@ -15,13 +15,15 @@ public class ProduitFournisseurRepository {
     private final Database database = new Database();
 
     public boolean ajouterProduitFournisseur(ProduitFournisseur produitFournisseur) {
-        String sql = "INSERT INTO produit_fournisseur (id_produit, id_fournisseur, prix) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO produit_fournisseur (id_produit, id_fournisseur, libelle, nom, prix) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = database.getConnection();
                 PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setInt(1, produitFournisseur.getIdProduit());
             statement.setInt(2, produitFournisseur.getIdFournisseur());
-            statement.setDouble(3, produitFournisseur.getPrix());
+            statement.setString(3, produitFournisseur.getLibelle());
+            statement.setString(4, produitFournisseur.getNom());
+            statement.setDouble(5, produitFournisseur.getPrix());
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         }
@@ -32,20 +34,20 @@ public class ProduitFournisseurRepository {
     }
 
     public List<ProduitFournisseur> getProduitFournisseurs() {
-
         List<ProduitFournisseur> associations = new ArrayList<>();
-        String sql = "SELECT p.libelle, f.nom, pf.prix FROM produit_fournisseur pf " +
-                "JOIN produit p ON pf.id_produit = p.id_produit " +
-                "JOIN fournisseur f ON pf.id_fournisseur = f.id_fournisseur";
+        String sql = "SELECT id_produit, id_fournisseur, libelle, nom, prix FROM produit_fournisseur";
 
         try (Connection conn = database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Produit produit = new Produit(rs.getString("libelle"));
-                Fournisseur fournisseur = new Fournisseur(rs.getString("nom"));
-                ProduitFournisseur association = new ProduitFournisseur(produit.getId(), fournisseur.getId(), rs.getDouble("prix"));
+                // Récupère l'id et le libellé du produit
+                Produit produit = new Produit(rs.getInt("id_produit"), rs.getString("libelle"));
+                // Récupère l'id et le nom du fournisseur
+                Fournisseur fournisseur = new Fournisseur(rs.getInt("id_fournisseur"), rs.getString("nom"));
+                // Crée l'association
+                ProduitFournisseur association = new ProduitFournisseur(produit, fournisseur, rs.getDouble("prix"));
                 associations.add(association);
             }
         } catch (SQLException e) {
@@ -53,5 +55,6 @@ public class ProduitFournisseurRepository {
         }
         return associations;
     }
+
 
 }

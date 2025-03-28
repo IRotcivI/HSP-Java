@@ -1,39 +1,41 @@
 package model;
 
 public class Chambre {
-    private String type;
-    private int numero;
-    private boolean disponible;
+    private static String type;
+    private static int numero;
+    private static String disponible;
 
 
-    public Chambre(String type, int numero, boolean disponible) {
-        this.type = type;
-        this.numero = numero;
-        this.disponible = disponible;
+    public Chambre( int numero,String type, String disponible) {
+        Chambre.numero = numero;
+        Chambre.type = type;
+        Chambre.disponible = disponible;
     }
 
 
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
-    public int getNumero() {
+    public static int getNumero() {
         return numero;
     }
 
     public void setNumero(int numero) {
-        this.numero = numero;
+        Chambre.numero = numero;
     }
 
-    public boolean isDisponible() {
+    public static String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        Chambre.type = type;
+    }
+
+    public static String getDisponible() {
         return disponible;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+    public static void setDisponible(String disponible) {
+        Chambre.disponible = disponible;
     }
 }

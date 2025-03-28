@@ -75,7 +75,7 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirGestionProduits(ActionEvent event) throws IOException {
+    void ouvrirGestionStock(ActionEvent event) throws IOException {
         Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/GestionStock.fxml"));
         Scene scene = new Scene(gestion_produit);
         Stage stage = new Stage();
@@ -85,8 +85,8 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirGestionFournisseur(ActionEvent event) throws IOException {
-        Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/GestionFournisseur.fxml"));
+    void ouvrirListeStock(ActionEvent event) throws IOException {
+        Parent gestion_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/ProduitsFournisseurs.fxml"));
         Scene scene = new Scene(gestion_produit);
         Stage stage = new Stage();
         stage.setTitle("MediTrack");
