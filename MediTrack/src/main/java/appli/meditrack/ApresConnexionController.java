@@ -115,8 +115,13 @@ public class ApresConnexionController {
     }
 
     @FXML
-    void ouvrirListeProduits(ActionEvent event) {
-
+    void ouvrirListeProduits(ActionEvent event) throws IOException {
+        Parent liste_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/ListeProduits.fxml"));
+        Scene scene = new Scene(liste_produit);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
