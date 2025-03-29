@@ -125,6 +125,16 @@ public class ApresConnexionController {
     }
 
     @FXML
+    void ouvrirListeUtilisateur(ActionEvent event) throws IOException {
+        Parent liste_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesUtilisateurs/ListeUtilisateurs.fxml"));
+        Scene scene = new Scene(liste_produit);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void ouvrirManuel(ActionEvent event) {
 
     }

@@ -8,11 +8,11 @@ public class Utilisateur {
     private String mdp;
     private String role;
 
-    public Utilisateur(String nom, String prenom, String email, String mdp, String role) {
+    public Utilisateur(String nom, String prenom, String email, String motDePasse, String role) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.mdp = mdp;
+        this.mdp = motDePasse;
         this.role = role;
     }
 

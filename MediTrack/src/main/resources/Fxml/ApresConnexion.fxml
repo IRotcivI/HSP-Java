@@ -27,6 +27,7 @@
                 </Menu>
                 <Menu text="Gestion des utilisateurs">
                     <MenuItem onAction="#ouvrirFormulaireAjoutUtilisateur" text="Ajout utilisateur" />
+               <MenuItem onAction="#ouvrirListeUtilisateur" text="Liste utilisateur" />
                 </Menu>
                 <Menu text="Gestion des stocks">
                     <MenuItem onAction="#ouvrirGestionStock" text="Gestion du stock" />
