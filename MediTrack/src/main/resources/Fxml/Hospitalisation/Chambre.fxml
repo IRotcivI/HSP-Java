@@ -5,17 +5,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="appli.meditrack.TableauChambresController"
             prefHeight="400.0" prefWidth="600.0">
 
     <VBox>
-        <TableView fx:id="chambreTable">
+        <TableView fx:id="getChambres">
             <columns>
-                <TableColumn text="Numéro" fx:id="numeroCol" />
-                <TableColumn text="Type" fx:id="typeCol" />
-                <TableColumn text="Disponible" fx:id="disponibleCol" />
+                <TableColumn fx:id="numeroProperty" text="Numéro">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="numero"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="typeProperty" text="Type">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="type"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="disponibleProperty" text="Disponible">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="disponible"/>
+                    </cellValueFactory>
+                </TableColumn>
             </columns>
         </TableView>
     </VBox>

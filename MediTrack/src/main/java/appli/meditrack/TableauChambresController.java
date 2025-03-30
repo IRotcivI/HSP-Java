@@ -1,42 +1,59 @@
 package appli.meditrack;
 
-import database.Database;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import model.Chambre;
+import repository.ChambreRepository;
+
+import java.sql.SQLException;
 
 public class TableauChambresController {
 
-    @FXML
-    private TableView<Chambre> chambreTable;
-    @FXML
-    private TableColumn<Chambre, Integer> numeroCol;
-    @FXML
-    private TableColumn<Chambre, String> typeCol;
-    @FXML
-    private TableColumn<Chambre, String> disponibleCol;
 
     @FXML
-        public void initialize() {
+    private TableView<Chambre> getChambres;
 
-            numeroCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
-            typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-            disponibleCol.setCellValueFactory(new PropertyValueFactory<>("disponible"));
+    @FXML
+    private TableColumn<Chambre, Integer> numeroProperty;
+
+    @FXML
+    private TableColumn<Chambre, String> typeProperty;
+
+    @FXML
+    private TableColumn<Chambre, String> disponibleProperty;
+
+    @FXML
+    public void initialize() throws SQLException {
+        getChambres();
+    }
+    @FXML
+    public void getChambres() throws SQLException {
+        ObservableList<Chambre> chambresList = ChambreRepository.getChambres();
 
 
-            Database db = new Database();
-        ObservableList<Chambre> data = FXCollections.observableArrayList();
+        numeroProperty.setCellValueFactory(cellData -> cellData.getValue().numeroProperty().asObject());
+        typeProperty.setCellValueFactory(cellData -> cellData.getValue().typeProperty());
+        disponibleProperty.setCellValueFactory(cellData -> cellData.getValue().disponibleProperty());
 
 
-            chambreTable.setItems(data);
-        }
-
-    private void getChambre() {
-
+        getChambres.setItems(chambresList);
     }
 
+    private void showInfo(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

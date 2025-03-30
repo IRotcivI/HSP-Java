@@ -1,41 +1,38 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Chambre {
-    private static String type;
-    private static int numero;
-    private static String disponible;
+    private final javafx.beans.property.IntegerProperty numero;
+    private final javafx.beans.property.StringProperty type;
+    private final javafx.beans.property.StringProperty disponible;
 
-
-    public Chambre( int numero,String type, String disponible) {
-        Chambre.numero = numero;
-        Chambre.type = type;
-        Chambre.disponible = disponible;
+    public Chambre(int numero, String type, String disponible) {
+        this.numero = new SimpleIntegerProperty(numero);;
+        this.type = new SimpleStringProperty(type);
+        this.disponible = new SimpleStringProperty(disponible);
     }
 
+    public int getNumero() {
+        return numero.get();
+    }
 
-
-
-    public static int getNumero() {
+    public javafx.beans.property.IntegerProperty numeroProperty() {
         return numero;
     }
-
-    public void setNumero(int numero) {
-        Chambre.numero = numero;
+    public String getType() {
+        return type.get();
     }
-
-    public static String getType() {
+    public javafx.beans.property.StringProperty typeProperty() {
         return type;
     }
-
-    public void setType(String type) {
-        Chambre.type = type;
+    public String getDisponible() {
+        return disponible.get();
     }
-
-    public static String getDisponible() {
+    public javafx.beans.property.StringProperty disponibleProperty() {
         return disponible;
-    }
-
-    public static void setDisponible(String disponible) {
-        Chambre.disponible = disponible;
     }
 }
