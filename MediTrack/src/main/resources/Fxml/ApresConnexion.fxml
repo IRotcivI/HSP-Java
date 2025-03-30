@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ApresConnexionController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ApresConnexionController">
     <top>
         <MenuBar>
             <menus>
@@ -27,10 +27,11 @@
                 </Menu>
                 <Menu text="Gestion des utilisateurs">
                     <MenuItem onAction="#ouvrirFormulaireAjoutUtilisateur" text="Ajout utilisateur" />
+               <MenuItem onAction="#ouvrirListeUtilisateur" text="Liste utilisateur" />
                 </Menu>
                 <Menu text="Gestion des stocks">
                     <MenuItem onAction="#ouvrirGestionStock" text="Gestion du stock" />
-                    <MenuItem onAction="#ouvrirListeStock" text="Liste du stock" />
+                    <MenuItem onAction="#ouvrirListeProduits" text="Liste du stock" />
                     <MenuItem onAction="#ouvrirDemandes" text="Gérer les demandes" />
                     <MenuItem onAction="#ouvrirReapprovisionnement" text="Réapprovisionnement" />
                 </Menu>

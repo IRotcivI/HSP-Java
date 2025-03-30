@@ -9,21 +9,21 @@ public class Produit {
     private IntegerProperty id;
     private StringProperty libelle;
     private StringProperty description;
-    private StringProperty niveauDangerosite;
+    private IntegerProperty niveauDangerosite;
 
     // Constructeur avec id (utile pour récupérer depuis la BDD)
-    public Produit(int id, String libelle, String description, String niveauDangerosite) {
+    public Produit(int id, String libelle, String description, Integer niveauDangerosite) {
         this.id = new SimpleIntegerProperty(id);
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
-        this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
+        this.niveauDangerosite = new SimpleIntegerProperty(niveauDangerosite);
     }
 
     // Constructeur sans id (utile pour ajouter un nouveau produit)
-    public Produit(String libelle, String description, String niveauDangerosite) {
+    public Produit(String libelle, String description, Integer niveauDangerosite) {
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
-        this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
+        this.niveauDangerosite = new SimpleIntegerProperty(niveauDangerosite);
     }
     public Produit(String libelle) {
         this.libelle = new SimpleStringProperty(libelle);
@@ -46,7 +46,7 @@ public class Produit {
         return description;
     }
 
-    public StringProperty niveauDangerositeProperty() {
+    public IntegerProperty niveauDangerositeProperty() {
         return niveauDangerosite;
     }
 
@@ -75,11 +75,11 @@ public class Produit {
         this.description.set(description);
     }
 
-    public String getNiveauDangerosite() {
+    public Integer getNiveauDangerosite() {
         return niveauDangerosite.get();
     }
 
-    public void setNiveauDangerosite(String niveauDangerosite) {
+    public void setNiveauDangerosite(Integer niveauDangerosite) {
         this.niveauDangerosite.set(niveauDangerosite);
     }
 
