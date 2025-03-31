@@ -12,14 +12,14 @@ public class ProduitRepository {
     private final Database database = new Database();
 
     public boolean ajouterProduit(Produit produit) {
-        String sql = "INSERT INTO produit (libelle, description, niveauDangerosité) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO produit (libelle, description, niveauDangerosite) VALUES (?, ?, ?)";
 
         try (Connection connection = database.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, produit.getLibelle());
             stmt.setString(2, produit.getDescription());
-            stmt.setString(3, produit.getNiveauDangerosite());
+            stmt.setInt(3, produit.getNiveauDangerosite());
 
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
@@ -31,7 +31,7 @@ public class ProduitRepository {
 
     public List<Produit> getProduits() {
         List<Produit> produits = new ArrayList<>();
-        String sql = "SELECT id_produit, libelle, description, niveauDangerosité FROM produit";
+        String sql = "SELECT id_produit, libelle, description, niveauDangerosite FROM produit";
 
         try (Connection connection = database.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql);
@@ -42,7 +42,7 @@ public class ProduitRepository {
                         rs.getInt("id_produit"),  // Ajout de l'ID
                         rs.getString("libelle"),
                         rs.getString("description"),
-                        rs.getString("niveauDangerosité")
+                        rs.getInt("niveauDangerosite")
                 );
                 produits.add(produit);
             }

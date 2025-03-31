@@ -165,6 +165,16 @@ public class ApresConnexionController {
     }
 
     @FXML
+    public void gererDemande() throws IOException {
+        Parent gerer_demande = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/gererDemande.fxml"));
+        Scene scene = new Scene(gerer_demande);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void quitter(ActionEvent event) {
         System.exit(0);
     }

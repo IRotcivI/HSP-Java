@@ -9,6 +9,7 @@
             <TableColumn text="Nom" fx:id="colNom" prefWidth="150" />
             <TableColumn text="Prenom" fx:id="colPrenom" prefWidth="300" />
             <TableColumn text="Email" fx:id="colEmail" prefWidth="200" />
+            <TableColumn text="Role" fx:id="colRole" prefWidth="200" />
         </columns>
     </TableView>
 </AnchorPane>

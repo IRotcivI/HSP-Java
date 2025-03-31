@@ -25,6 +25,9 @@ public class ListeUtilisateursController {
     private TableColumn<Utilisateur, Integer> colEmail;
 
     @FXML
+    private TableColumn<Utilisateur, Integer> colRole;
+
+    @FXML
     private TableView<Utilisateur> tableUtilisateur;
 
     private ObservableList<Utilisateur> utilisateurList = FXCollections.observableArrayList();
@@ -35,6 +38,8 @@ public class ListeUtilisateursController {
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colRole.setCellValueFactory(new PropertyValueFactory<>("role"));
+
 
         // Charger les données de la base de données
         chargerDonneesDepuisBD();
@@ -44,7 +49,7 @@ public class ListeUtilisateursController {
         Database database = new Database();
         Connection connection = database.getConnection();
 
-        String requete = "SELECT nom, prenom, email FROM utilisateur";
+        String requete = "SELECT * FROM utilisateur";
         PreparedStatement requeteStatement = connection.prepareStatement(requete);
         ResultSet resultSet = requeteStatement.executeQuery();
 
@@ -54,7 +59,7 @@ public class ListeUtilisateursController {
                     resultSet.getString("prenom"),
                     resultSet.getString("email"),
                     "",
-                    ""
+                    resultSet.getInt("ref_role") == 1 ? "User" : "Admin"
             ));
         }
 

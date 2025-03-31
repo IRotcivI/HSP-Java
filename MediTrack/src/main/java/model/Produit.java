@@ -12,7 +12,7 @@ public class Produit {
     private IntegerProperty niveauDangerosite;
 
     // Constructeur avec id (utile pour récupérer depuis la BDD)
-    public Produit(int id, String libelle, String description, Integer niveauDangerosite) {
+    public Produit(int id, String libelle, String description, int niveauDangerosite) {
         this.id = new SimpleIntegerProperty(id);
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
@@ -20,7 +20,7 @@ public class Produit {
     }
 
     // Constructeur sans id (utile pour ajouter un nouveau produit)
-    public Produit(String libelle, String description, Integer niveauDangerosite) {
+    public Produit(String libelle, String description, int niveauDangerosite) {
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
         this.niveauDangerosite = new SimpleIntegerProperty(niveauDangerosite);
@@ -29,8 +29,6 @@ public class Produit {
         this.libelle = new SimpleStringProperty(libelle);
     }
 
-    public Produit(int idProduit, String libelle) {
-    }
 
 
     // Getters et Setters pour les propriétés JavaFX

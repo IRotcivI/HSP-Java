@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ApresConnexionController">
+    <children>
+        <!-- Premier tableau -->
+        <TableView layoutX="40.0" layoutY="20.0" prefHeight="220.0" prefWidth="250.0">
+            <columns>
+                <TableColumn text="Libellé" fx:id="colLibelle" prefWidth="80" />
+                <TableColumn text="Description" fx:id="colDescription" prefWidth="80" />
+                <TableColumn text="Dangerosité" fx:id="colNiveauDangerosite" prefWidth="80" />
+            </columns>
+        </TableView>
+
+        <!-- Deuxième tableau -->
+        <TableView layoutX="310.0" layoutY="20.0" prefHeight="220.0" prefWidth="250.0">
+            <columns>
+                <TableColumn text="Nom" fx:id="colNom" prefWidth="80" />
+                <TableColumn text="Email" fx:id="colEmail" prefWidth="80" />
+                <TableColumn text="Telephone" fx:id="colTelephone" prefWidth="80" />
+            </columns>
+        </TableView>
+
+        <!-- Label et champ de texte -->
+        <Text layoutX="180.0" layoutY="270.0" text="Quantité :" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <TextField layoutX="250.0" layoutY="260.0" prefWidth="120.0" />
+
+        <!-- Boutons -->
+        <Button layoutX="180.0" layoutY="320.0" prefWidth="100.0" text="Refuser" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
+        <Button layoutX="320.0" layoutY="320.0" prefWidth="100.0" text="Accepter" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </children>
+</AnchorPane>
