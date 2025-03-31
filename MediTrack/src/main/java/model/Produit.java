@@ -9,27 +9,25 @@ public class Produit {
     private IntegerProperty id;
     private StringProperty libelle;
     private StringProperty description;
-    private IntegerProperty niveauDangerosite;
+    private StringProperty niveauDangerosite;
 
     // Constructeur avec id (utile pour récupérer depuis la BDD)
-    public Produit(int id, String libelle, String description, int niveauDangerosite) {
+    public Produit(int id, String libelle, String description, String niveauDangerosite) {
         this.id = new SimpleIntegerProperty(id);
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
-        this.niveauDangerosite = new SimpleIntegerProperty(niveauDangerosite);
+        this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
     }
 
     // Constructeur sans id (utile pour ajouter un nouveau produit)
-    public Produit(String libelle, String description, int niveauDangerosite) {
+    public Produit(String libelle, String description, String niveauDangerosite) {
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
-        this.niveauDangerosite = new SimpleIntegerProperty(niveauDangerosite);
+        this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
     }
     public Produit(String libelle) {
         this.libelle = new SimpleStringProperty(libelle);
     }
-
-
 
     // Getters et Setters pour les propriétés JavaFX
     public IntegerProperty idProperty() {
@@ -44,7 +42,7 @@ public class Produit {
         return description;
     }
 
-    public IntegerProperty niveauDangerositeProperty() {
+    public StringProperty niveauDangerositeProperty() {
         return niveauDangerosite;
     }
 
@@ -73,11 +71,11 @@ public class Produit {
         this.description.set(description);
     }
 
-    public Integer getNiveauDangerosite() {
+    public String getNiveauDangerosite() {
         return niveauDangerosite.get();
     }
 
-    public void setNiveauDangerosite(Integer niveauDangerosite) {
+    public void setNiveauDangerosite(String niveauDangerosite) {
         this.niveauDangerosite.set(niveauDangerosite);
     }
 

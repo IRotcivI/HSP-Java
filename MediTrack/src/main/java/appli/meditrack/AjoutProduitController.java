@@ -29,7 +29,7 @@ public class AjoutProduitController {
     void creationProduit(ActionEvent event) {
         String libelleProduit = libelle.getText();
         String descriptionProduit = description.getText();
-        String niveauDanger = niveauDangerosite.getValue();
+        String niveauDanger = String.valueOf(niveauDangerosite.getValue());
 
         if (libelleProduit.isEmpty() || descriptionProduit.isEmpty() || niveauDanger == null) {
             messageLabel.setText("Veuillez remplir tous les champs !");

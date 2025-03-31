@@ -19,7 +19,7 @@ public class ProduitRepository {
 
             stmt.setString(1, produit.getLibelle());
             stmt.setString(2, produit.getDescription());
-            stmt.setInt(3, produit.getNiveauDangerosite());
+            stmt.setString(3, produit.getNiveauDangerosite());
 
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
@@ -42,7 +42,7 @@ public class ProduitRepository {
                         rs.getInt("id_produit"),  // Ajout de l'ID
                         rs.getString("libelle"),
                         rs.getString("description"),
-                        rs.getInt("niveauDangerosite")
+                        rs.getString("niveauDangerosite")
                 );
                 produits.add(produit);
             }

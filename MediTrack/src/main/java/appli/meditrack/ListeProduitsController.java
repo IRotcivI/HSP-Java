@@ -15,6 +15,7 @@ import repository.ProduitRepository;
 import java.sql.*;
 import java.util.List;
 
+
 public class ListeProduitsController {
 
     private final ProduitRepository produitRepository = new ProduitRepository();
@@ -37,7 +38,7 @@ public class ListeProduitsController {
     private void setupTableProduits() {
         colLibelle.setCellValueFactory(cellData -> cellData.getValue().libelleProperty());
         colDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        colNiveauDangerosite.setCellValueFactory(cellData -> cellData.getValue().niveauDangerositeProperty().asObject().asString());
+        colNiveauDangerosite.setCellValueFactory(cellData -> cellData.getValue().niveauDangerositeProperty());
     }
 
     private void loadProduits() {

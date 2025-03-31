@@ -43,7 +43,7 @@ public class ProduitFournisseurRepository {
 
             while (rs.next()) {
                 // Récupère l'id et le libellé du produit
-                Produit produit = new Produit(rs.getInt("id_produit"), rs.getString("libelle"));
+                Produit produit = new Produit(rs.getInt("id_produit"), rs.getString("libelle"), rs.getString("description"), rs.getString("niveauDangerosite"));
                 // Récupère l'id et le nom du fournisseur
                 Fournisseur fournisseur = new Fournisseur(rs.getInt("id_fournisseur"), rs.getString("nom"));
                 // Crée l'association
