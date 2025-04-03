@@ -26,16 +26,23 @@ public class ProduitsFournisseursController {
 
     @FXML
     private void initialize() {
-        setupTableAssociations();
         loadAssociations();
+        setupTableAssociations();
+
     }
 
     private void setupTableAssociations() {
-        // Lier les cellules de la table aux propriétés des objets ProduitFournisseur
-        colProduitLibelle.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLibelle()));
-        colFournisseurNom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
-        colPrix.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
+        // Lier les cellules de la table aux propriétés de ProduitFournisseur
+        colProduitLibelle.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getLibelle()));
+
+        colFournisseurNom.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getNom()));
+
+        colPrix.setCellValueFactory(cellData ->
+                new SimpleDoubleProperty(cellData.getValue().getPrix()).asObject());
     }
+
 
     private void loadAssociations() {
         // Récupérer les associations depuis le repository

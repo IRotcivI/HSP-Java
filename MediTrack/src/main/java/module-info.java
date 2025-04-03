@@ -10,10 +10,11 @@ module appli.meditrack {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires jdk.sctp;
 
     opens appli.meditrack to javafx.fxml;
     exports appli.meditrack;
     opens model to javafx.base;
     opens Fxml.gestionDesStocks to javafx.fxml;
-    exports Fxml.gestionDesStocks;
+
 }

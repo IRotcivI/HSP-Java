@@ -1,5 +1,6 @@
 package appli.meditrack;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,11 +44,10 @@ public class InscriptionController {
     @FXML
     private ComboBox<String> roleComboBox;
 
+
     @FXML
-    public void initialize() {
-        // Ajouter les rôles disponibles dans le ComboBox
-        List<String> roles = Arrays.asList("Admin", "Médecin", "Patient");
-        roleComboBox.getItems().addAll(roles);
+    private void initialize() {
+        roleComboBox.setItems(FXCollections.observableArrayList("Admin", "Médecin", "Gestionnaire", "Secretaire"));
     }
 
     @FXML
@@ -82,6 +82,7 @@ public class InscriptionController {
             boolean inscrit = utilisateurRepository.ajouterUtilisateur(utilisateur);
             if (inscrit) {
                 messageLabel.setText("Inscription réussie !");
+                messageLabel.setStyle("-fx-text-fill: green;");
             } else {
                 messageLabel.setText("Erreur lors de l'inscription.");
             }

@@ -31,7 +31,7 @@
                 </Menu>
                 <Menu text="Gestion des stocks">
                     <MenuItem onAction="#ouvrirGestionStock" text="Gestion du stock" />
-                    <MenuItem onAction="#ouvrirListeProduits" text="Liste du stock" />
+                    <MenuItem onAction="#ouvrirListeStock" text="Liste du stock" />
                     <MenuItem onAction="#gererDemande" text="Gérer les demandes" />
                     <MenuItem onAction="#ouvrirReapprovisionnement" text="Réapprovisionnement" />
                 </Menu>

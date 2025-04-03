@@ -1,5 +1,6 @@
 package repository;
 
+import com.sun.nio.sctp.Association;
 import database.Database;
 import model.Fournisseur;
 import model.Produit;
@@ -42,13 +43,14 @@ public class ProduitFournisseurRepository {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                // Récupère l'id et le libellé du produit
-                Produit produit = new Produit(rs.getInt("id_produit"), rs.getString("libelle"), rs.getString("description"), rs.getString("niveauDangerosite"));
-                // Récupère l'id et le nom du fournisseur
-                Fournisseur fournisseur = new Fournisseur(rs.getInt("id_fournisseur"), rs.getString("nom"));
-                // Crée l'association
-                ProduitFournisseur association = new ProduitFournisseur(produit, fournisseur, rs.getDouble("prix"));
-                associations.add(association);
+                ProduitFournisseur ProduitFournisseur = new ProduitFournisseur(
+                        rs.getInt("id_produit"),  // Ajout de l'ID
+                        rs.getInt("id_fournisseur"),  // Ajout de l'ID
+                        rs.getString("libelle"),
+                        rs.getString("nom"),
+                        rs.getDouble("prix")
+                );
+                associations.add(ProduitFournisseur);
             }
         } catch (SQLException e) {
             e.printStackTrace();
