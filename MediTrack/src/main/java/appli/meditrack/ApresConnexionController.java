@@ -123,6 +123,15 @@ public class ApresConnexionController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void ouvrirListeFournisseurs(ActionEvent event) throws IOException {
+        Parent liste_produit = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/ListeFournisseurs.fxml"));
+        Scene scene = new Scene(liste_produit);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void ouvrirListeUtilisateur(ActionEvent event) throws IOException {
