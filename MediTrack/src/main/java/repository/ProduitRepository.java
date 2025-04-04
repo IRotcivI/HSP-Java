@@ -31,7 +31,7 @@ public class ProduitRepository {
 
     public List<Produit> getProduits() {
         List<Produit> produits = new ArrayList<>();
-        String sql = "SELECT id_produit, libelle, description, niveauDangerosite FROM produit";
+        String sql = "SELECT id_produit, libelle, description, niveauDangerosite, stock FROM produit";
 
         try (Connection connection = database.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql);
@@ -42,7 +42,8 @@ public class ProduitRepository {
                         rs.getInt("id_produit"),  // Ajout de l'ID
                         rs.getString("libelle"),
                         rs.getString("description"),
-                        rs.getString("niveauDangerosite")
+                        rs.getString("niveauDangerosite"),
+                        rs.getInt("stock")
                 );
                 produits.add(produit);
             }

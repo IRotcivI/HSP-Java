@@ -1,6 +1,7 @@
 package appli.meditrack;
 
 import database.Database;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class ListeProduitsController {
     @FXML private TableColumn<Produit, String> colLibelle;
     @FXML private TableColumn<Produit, String> colDescription;
     @FXML private TableColumn<Produit, String> colNiveauDangerosite;
+    @FXML private TableColumn<Produit, Integer> colStock;
+
 
     private ObservableList<Produit> produitsList = FXCollections.observableArrayList();
 
@@ -39,6 +42,8 @@ public class ListeProduitsController {
         colLibelle.setCellValueFactory(cellData -> cellData.getValue().libelleProperty());
         colDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         colNiveauDangerosite.setCellValueFactory(cellData -> cellData.getValue().niveauDangerositeProperty());
+        colStock.setCellValueFactory(cellData -> cellData.getValue().stockProperty().asObject());
+
     }
 
     private void loadProduits() {

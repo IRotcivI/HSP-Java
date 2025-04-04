@@ -10,13 +10,15 @@ public class Produit {
     private StringProperty libelle;
     private StringProperty description;
     private StringProperty niveauDangerosite;
+    private IntegerProperty stock;
 
     // Constructeur avec id (utile pour récupérer depuis la BDD)
-    public Produit(int id, String libelle, String description, String niveauDangerosite) {
+    public Produit(int id, String libelle, String description, String niveauDangerosite, int stock) {
         this.id = new SimpleIntegerProperty(id);
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
         this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
+        this.stock = new SimpleIntegerProperty(stock);
     }
 
     // Constructeur sans id (utile pour ajouter un nouveau produit)
@@ -24,6 +26,7 @@ public class Produit {
         this.libelle = new SimpleStringProperty(libelle);
         this.description = new SimpleStringProperty(description);
         this.niveauDangerosite = new SimpleStringProperty(niveauDangerosite);
+
     }
     public Produit(String libelle) {
         this.libelle = new SimpleStringProperty(libelle);
@@ -45,6 +48,8 @@ public class Produit {
     public StringProperty niveauDangerositeProperty() {
         return niveauDangerosite;
     }
+
+    public IntegerProperty stockProperty() { return stock; }
 
     // Getters et Setters pour les valeurs
     public int getId() {
@@ -77,6 +82,14 @@ public class Produit {
 
     public void setNiveauDangerosite(String niveauDangerosite) {
         this.niveauDangerosite.set(niveauDangerosite);
+    }
+
+    public int getStock() {
+        return stock.get();
+    }
+
+    public void setStock(int stock) {
+        this.stock.set(stock);
     }
 
     @Override

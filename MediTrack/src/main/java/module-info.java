@@ -11,6 +11,7 @@ module appli.meditrack {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires jdk.sctp;
+    requires java.desktop;
 
     opens appli.meditrack to javafx.fxml;
     exports appli.meditrack;

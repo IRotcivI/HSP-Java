@@ -9,6 +9,7 @@
             <TableColumn text="Libellé" fx:id="colLibelle" prefWidth="150" />
             <TableColumn text="Description" fx:id="colDescription" prefWidth="300" />
             <TableColumn text="Niveau de Dangerosité" fx:id="colNiveauDangerosite" prefWidth="200" />
+            <TableColumn text="Stock" fx:id="colStock" prefWidth="200" />
         </columns>
     </TableView>
 </AnchorPane>

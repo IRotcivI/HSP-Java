@@ -24,6 +24,7 @@ public class GestionStockController {
     private final FournisseurRepository fournisseurRepository = new FournisseurRepository();
     private final ProduitRepository produitRepository = new ProduitRepository();
 
+
     // Tableaux pour afficher les produits et fournisseurs
     @FXML private TableView<Produit> tableProduits;
     @FXML private TableColumn<Produit, String> colLibelle;
@@ -41,6 +42,7 @@ public class GestionStockController {
 
     @FXML private TextField prixTextField;
     @FXML private Button AssocierButton;
+    public Button ajouterFournisseurButton;
     @FXML private Label messageLabel;
 
     /**

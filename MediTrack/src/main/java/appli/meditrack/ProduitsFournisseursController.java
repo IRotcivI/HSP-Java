@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import model.ProduitFournisseur;
 import repository.ProduitFournisseurRepository;
 
+import javax.swing.*;
 import java.util.List;
 
 public class ProduitsFournisseursController {
@@ -21,6 +22,8 @@ public class ProduitsFournisseursController {
     private TableColumn<ProduitFournisseur, String> colFournisseurNom;
     @FXML
     private TableColumn<ProduitFournisseur, Double> colPrix;
+
+    public Button boutonCommander;
 
     private final ProduitFournisseurRepository produitFournisseurRepository = new ProduitFournisseurRepository();
 
