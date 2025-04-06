@@ -4,18 +4,36 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Dossier {
+    private SimpleStringProperty dossierId;
     private final StringProperty dateArrivee = new SimpleStringProperty();
     private final StringProperty heureArrivee = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty decision = new SimpleStringProperty();
     private final StringProperty nomPatient = new SimpleStringProperty();
 
-    public Dossier(String dateArrivee, String heureArrivee, String description, String decision, String nomPatient) {
+    public Dossier(int dossierId, String dateArrivee, String heureArrivee, String description, String decision, String nomPatient) {
+        this.dossierId = new SimpleStringProperty(Integer.toString(dossierId));
         setDateArrivee(dateArrivee);
         setHeureArrivee(heureArrivee);
         setDescription(description);
         setDecision(decision);
         setNomPatient(nomPatient);
+    }
+
+    public Dossier(String dateArrivee, String heureArrivee, String description, String decision, String nomPatient) {
+        this(0, dateArrivee, heureArrivee, description, decision, nomPatient);
+    }
+
+    public String getDossierId() {
+        return dossierId.get();
+    }
+
+    public SimpleStringProperty dossierIdProperty() {
+        return dossierId;
+    }
+
+    public void setDossierId(String dossierId) {
+        this.dossierId.set(dossierId);
     }
 
     public String getDateArrivee() {

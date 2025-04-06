@@ -54,4 +54,34 @@ public class DossierRepository {
             }
         }
     }
+
+    public void supprimerDossier(int idDossier) throws SQLException {
+        Connection connection = null;
+        PreparedStatement selectPs = null;
+        ResultSet rs = null;
+        try {
+            connection = new Database().getConnection();
+            String sql = "DELETE FROM dossier WHERE id_dossier = ?";
+            selectPs = connection.prepareStatement(sql);
+            selectPs.setInt(1, idDossier);
+            selectPs.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void marquerDossier(int idDossier) throws SQLException {
+        Connection connection = null;
+        PreparedStatement selectPs = null;
+        ResultSet rs = null;
+        try {
+            connection = new Database().getConnection();
+            String sql = "UPDATE dossier SET decision = 'LU' WHERE id_dossier = ?";
+            selectPs = connection.prepareStatement(sql);
+            selectPs.setInt(1, idDossier);
+            selectPs.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

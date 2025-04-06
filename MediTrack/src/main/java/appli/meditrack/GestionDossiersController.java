@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Dossier;
+import repository.DossierRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,6 +41,8 @@ public class GestionDossiersController {
 
     private final ObservableList<Dossier> dossiers = FXCollections.observableArrayList();
 
+    private DossierRepository dossierRepository = new DossierRepository();
+
     @FXML
     public void initialize() {
         columnNomPatient.setCellValueFactory(new PropertyValueFactory<>("nomPatient"));
@@ -53,7 +56,7 @@ public class GestionDossiersController {
     }
 
     private void loadDossiersFromDatabase() {
-        String query = "SELECT d.date, d.heureArrive, d.description, d.décision, fp.nom " +
+        String query = "SELECT d.id_dossier, d.date, d.heureArrive, d.description, d.decision, fp.nom " +
                 "FROM dossier d " +
                 "JOIN fiche_patient fp ON d.ref_patient = fp.id_patient";
 
@@ -63,13 +66,14 @@ public class GestionDossiersController {
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
+                int idDossier = resultSet.getInt("id_dossier");
                 String dateArrivee = resultSet.getString("date");
                 String heureArrivee = resultSet.getString("heureArrive");
                 String description = resultSet.getString("description");
-                String decision = resultSet.getString("décision");
+                String decision = resultSet.getString("decision");
                 String nomPatient = resultSet.getString("nom");
 
-                Dossier dossier = new Dossier(dateArrivee, heureArrivee, description, decision, nomPatient);
+                Dossier dossier = new Dossier(idDossier, dateArrivee, heureArrivee, description, decision, nomPatient);
                 dossiers.add(dossier);
             }
         } catch (SQLException e) {
@@ -77,6 +81,7 @@ public class GestionDossiersController {
             labelStatus.setText("Erreur lors du chargement des dossiers.");
         }
     }
+
 
     @FXML
     public void consulterDossier() {
@@ -89,22 +94,26 @@ public class GestionDossiersController {
     }
 
     @FXML
-    public void supprimerDossier() {
+    public void supprimerDossier() throws SQLException {
         Dossier selectedDossier = tableViewDossiers.getSelectionModel().getSelectedItem();
         if (selectedDossier != null) {
+            int idDossier = Integer.parseInt(selectedDossier.getDossierId());
+            dossierRepository.supprimerDossier(idDossier);
             dossiers.remove(selectedDossier);
-            labelStatus.setText("Dossier supprimé.");
+            labelStatus.setText("Dossier supprimé");
         } else {
             labelStatus.setText("Aucun dossier sélectionné.");
         }
     }
 
+
     @FXML
-    public void marquerTraite() {
+    public void marquerTraite() throws SQLException {
         Dossier selectedDossier = tableViewDossiers.getSelectionModel().getSelectedItem();
         if (selectedDossier != null) {
-            selectedDossier.setDecision("Traité");
-            labelStatus.setText("Dossier marqué comme traité.");
+            int idDossier = Integer.parseInt(selectedDossier.getDossierId());
+            dossierRepository.marquerDossier(idDossier);
+            labelStatus.setText("Dossier marqué comme LU.");
         } else {
             labelStatus.setText("Aucun dossier sélectionné.");
         }
