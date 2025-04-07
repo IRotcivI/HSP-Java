@@ -174,6 +174,16 @@ public class ApresConnexionController {
     }
 
     @FXML
+    public void ouvreListeTest() throws IOException {
+        Parent creer_dossier = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesUtilisateurs/ListeTest.fxml"));
+        Scene scene = new Scene(creer_dossier);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     public void gererDemande() throws IOException {
         Parent gerer_demande = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesStocks/gererDemande.fxml"));
         Scene scene = new Scene(gerer_demande);

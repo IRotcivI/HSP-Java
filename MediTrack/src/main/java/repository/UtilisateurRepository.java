@@ -34,7 +34,7 @@ public class UtilisateurRepository {
 
     public boolean ajouterUtilisateur(Utilisateur utilisateur) throws SQLException {
 
-        String insertUserQuery = "INSERT INTO Utilisateur(nom, prenom, email, motDePasse, role) VALUES (?, ?, ?, ?, ?)";
+        String insertUserQuery = "INSERT INTO Utilisateur(nom, prenom, email, motDePasse, ref_role) VALUES (?, ?, ?, ?, ?)";
 
         Database database = new Database();
         try (Connection maConnexion = database.getConnection();
