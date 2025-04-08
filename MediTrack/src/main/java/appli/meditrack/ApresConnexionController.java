@@ -194,6 +194,16 @@ public class ApresConnexionController {
     }
 
     @FXML
+    void ouvrirPlaceParking(ActionEvent event) throws IOException {
+        Parent gerer_demande = FXMLLoader.load(getClass().getResource("/Fxml/gestionDesPlaces/PlaceDeParking.fxml"));
+        Scene scene = new Scene(gerer_demande);
+        Stage stage = new Stage();
+        stage.setTitle("MediTrack");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void quitter(ActionEvent event) {
         System.exit(0);
     }

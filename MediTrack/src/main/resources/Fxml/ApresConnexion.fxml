@@ -9,7 +9,7 @@
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appli.meditrack.ApresConnexionController">
     <top>
-        <MenuBar>
+        <MenuBar prefHeight="25.0" prefWidth="639.0">
             <menus>
                 <Menu text="Option">
                     <MenuItem onAction="#deconnexion" text="Déconnexion" />
@@ -38,11 +38,16 @@
                     <MenuItem onAction="#gererDemande" text="Gérer les demandes" />
                     <MenuItem onAction="#ouvrirReapprovisionnement" text="Réapprovisionnement" />
                 </Menu>
+            <Menu text="Place de parking">
+               <items>
+                  <MenuItem onAction="#ouvrirPlaceParking" text="Parking" />
+               </items>
+            </Menu>
             </menus>
         </MenuBar>
     </top>
     <center>
-        <StackPane fx:id="contenuDynamique">
+        <StackPane fx:id="contenuDynamique" prefHeight="375.0" prefWidth="650.0">
             <children>
                 <Label style="-fx-font-size: 16px;" text="Bienvenue dans l'application MediTrack !" />
             </children>
